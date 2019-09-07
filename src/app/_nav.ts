@@ -55,7 +55,7 @@ export const navItems: NavData[] = [
   },
   {
     title: true,
-    name: 'Components'
+    name: 'ComponentsSSS'
   },
   {
     name: 'Base',
