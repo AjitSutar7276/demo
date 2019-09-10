@@ -47,7 +47,7 @@ export const navItems: NavData[] = [
         {
           name: 'Unit Master',
           url: '/Master/unit',
-          icon: 'icon-cursor'
+          icon: 'con-drop'
         }
         
       ]
