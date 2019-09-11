@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {UnitMasterComponent} from './unit-master/unit-master.component'
+import {ShadeMasterComponent} from './shade-master/shade-master.component'
+
+
 
 const routes: Routes = [{
   path: '',
@@ -17,6 +20,13 @@ const routes: Routes = [{
         component: UnitMasterComponent,
         data: {
           title: 'Unit Master'
+        }
+      },
+      {
+        path: 'shade',
+        component: ShadeMasterComponent,
+        data: {
+          title: 'Shade Master'
         }
       },
      
