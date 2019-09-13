@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UnitMasterService} from './unit-master.service';
 @Component({
   selector: 'app-unit-master',
   templateUrl: './unit-master.component.html',
@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnitMasterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private unitservice : UnitMasterService) { 
+    let data={
+      'unit' : 'KG'
+    }
+    this.unitservice.insertUnit(data).subscribe(data=>{
+
+    })
+    // this.unitservice.insertUnit(data).subscribe(data=>{
+    //   console.log(data);
+    // },err=>{
+    //   console.log(err);
+    // })
+  }
 
   ngOnInit() {
   }
 
+  // submit()
+  // {
+    
+
+  // }
 }

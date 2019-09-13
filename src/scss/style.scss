@@ -6,3 +6,12 @@
 
 // If you want to add something do it here
 @import "custom";
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(../assets/font/RobotoCondensed-Regular.ttf);
+  }
+  *{
+      font-family: myFirstFont;
+      font-size: 15px;
+  }
