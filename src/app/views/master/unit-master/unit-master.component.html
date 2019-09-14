@@ -2,16 +2,86 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-              Unit Master
+                <strong>Unit</strong> Master 
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                        <button (click)="submit()">Click me</button>
+                <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid">
+                    <div class="form-group">
+                        <label>Unit ID</label>
+                        <input class="form-control"  name="" placeholder="Unit ID..">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Format * <span class="plchld">(Eg. Ltr, Kg, Meter)</span></label>
+                        <input class="form-control"  name="" placeholder="Enter Format..">
+                    </div>
+                </form>
             </div>
-          </div>
+
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
+            </div>
+        </div>
     </div>
+
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Unit Master Records
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Unit ID</th>
+                            <th>Format</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>KG</td>
+                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Gram</td>
+                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>Meter</td>
+                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>KM</td>
+                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td>MM</td>
+                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+   
 </div>
+
+
