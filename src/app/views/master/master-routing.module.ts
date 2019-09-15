@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {UnitMasterComponent} from './unit-master/unit-master.component'
-import {ShadeMasterComponent} from './shade-master/shade-master.component'
-
+import {UnitMasterComponent} from './unit-master/unit-master.component';
+import {ShadeMasterComponent} from './shade-master/shade-master.component';
+import {SurfaceTreMasterComponent} from './surface-tre-master/surface-tre-master.component';
+import {JobProcessMasterComponent} from './job-process-master/job-process-master.component';
+import {JobMasterComponent} from './job-master/job-master.component';
 
 
 const routes: Routes = [{
@@ -27,6 +29,30 @@ const routes: Routes = [{
         component: ShadeMasterComponent,
         data: {
           title: 'Shade Master'
+        }
+      },
+
+      {
+        path: 'surfaceTreMaster',
+        component: SurfaceTreMasterComponent,
+        data: {
+          title: 'Surface Treatment Master'
+        }
+      },
+
+      {
+        path: 'jobProcessMaster',
+        component: JobProcessMasterComponent,
+        data: {
+          title: 'Job Process Master'
+        }
+      },
+
+      {
+        path: 'jobMaster',
+        component: JobMasterComponent,
+        data: {
+          title: 'Job Master'
         }
       },
      

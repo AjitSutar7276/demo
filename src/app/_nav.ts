@@ -53,6 +53,21 @@ export const navItems: NavData[] = [
           name:'Shade Master',
           url :'/Master/shade',
           icon :'con-drop'
+        },
+        {
+          name:'Job Master',
+          url :'/Master/jobMaster',
+          icon :'con-drop'
+        },
+        {
+          name:'Job Process Master',
+          url :'/Master/jobProcessMaster',
+          icon :'con-drop'
+        },
+        {
+          name:'Surface Treatment Master',
+          url :'/Master/surfaceTreMaster',
+          icon :'con-drop'
         }
         
       ]
