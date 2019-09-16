@@ -8,12 +8,14 @@ import { JobMasterComponent } from './job-master/job-master.component';
 import { JobProcessMasterComponent } from './job-process-master/job-process-master.component';
 import { SurfaceTreMasterComponent } from './surface-tre-master/surface-tre-master.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent],
   imports: [
     CommonModule,
     MasterRoutingModule,
+    ReactiveFormsModule,
     HttpModule
   ]
 })
