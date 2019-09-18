@@ -4,21 +4,28 @@
                 <div class="card-header">
                     <strong>Job Master</strong> 
                 </div>
+                <form [formGroup]="jobForm" >
                 <div class="card-body">
-                    <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid">
-
+                    <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
+                        
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Job No.</label>
-                                    <input class="form-control"  name="" placeholder="Job No..">
+                                    <input class="form-control" formControlName="id" placeholder="Job No.." readonly>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Art No</label>
-                                    <input class="form-control"  name="" placeholder="Art No..">
+                                    <input class="form-control" formControlName="ArtNo"   placeholder="Art No.." required>
+                                    <div *ngIf="ArtNo.invalid && (ArtNo.dirty || ArtNo.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="ArtNo.errors.required">
+                                            Art No is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -29,14 +36,20 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Job Name</label>
-                                    <input class="form-control"  name="" placeholder="Job Name..">
+                                    <input class="form-control" formControlName="JobName"  placeholder="Job Name.." required>
+                                    <div *ngIf="JobName.invalid && (JobName.dirty || JobName.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="JobName.errors.required">
+                                            Job Name is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>HSN No</label>
-                                    <input class="form-control"  name="" placeholder="HSN No..">
+                                    <input class="form-control" formControlName="HSN"  placeholder="HSN No..">
                                 </div>
                             </div>
                         </div>
@@ -47,14 +60,20 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" id="textarea-input" name="textarea-input" placeholder="Description.." rows="2"></textarea>
+                                    <textarea class="form-control" id="textarea-input" formControlName="description" placeholder="Description.." rows="2"></textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Opening Stock</label>
-                                    <input class="form-control"  name="" placeholder="Opening Stock..">
+                                    <input class="form-control" formControlName="openStock"   placeholder="Opening Stock.." required>
+                                    <div *ngIf="openStock.invalid && (openStock.dirty || openStock.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="openStock.errors.required">
+                                            Open Stock is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -64,21 +83,21 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Min Level</label>
-                                    <input class="form-control"  name="" placeholder="Min Level..">
+                                    <input class="form-control"  formControlName="MinStock"  placeholder="Min Level..">
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Max Level</label>
-                                    <input class="form-control"  name="" placeholder="Max Level..">
+                                    <input class="form-control" formControlName="MaxStock"   placeholder="Max Level..">
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Rate</label>
-                                    <input class="form-control"  name="" placeholder="Rate..">
+                                    <input class="form-control" formControlName="Rate"   placeholder="Rate..">
                                 </div>
                             </div>
                         </div>
@@ -88,36 +107,38 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>CGST %</label>
-                                    <input class="form-control"  name="" placeholder="CGST..">
+                                    <input class="form-control" formControlName="cgst"  placeholder="CGST..">
                                 </div>
                             </div>
         
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>SGST %</label>
-                                    <input class="form-control"  name="" placeholder="SGST..">
+                                    <input class="form-control" formControlName="sgst"  placeholder="SGST..">
                                 </div>
                             </div>
     
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>IGST %</label>
-                                    <input class="form-control"  name="" placeholder="IGST..">
+                                    <input class="form-control" formControlName="igst"  placeholder="IGST..">
                                 </div>
                             </div>
     
                         </div>
 
-                    </form>
+                    <!-- </form> -->
                 </div>
 
                 
 
     
                 <div class="card-footer">
-                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                    <button *ngIf="submitShow" class="btn btn-sm btn-primary" type="submit" [disabled]="!jobForm.valid" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                    <button *ngIf="updateShow" class="btn btn-sm btn-primary" type="submit" [disabled]="!jobForm.valid" (click)="updateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
                     <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
                 </div>
+                </form> 
             </div>
         </div>
     
@@ -147,81 +168,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                            <tr *ngFor="let data of jobArray; let i=index;">
+                                <td>{{i+1}}</td>
+                                <td>{{data.art_no}}</td>
+                                <td>{{data.job_name }}</td>
+                                <td>{{data.hsn}}</td>
+                                <td>{{data.description}}</td>
+                                <td>{{data.open_stock}}</td>
+                                <td>{{data.min_stock}}</td>
+                                <td>{{data.max_stock}}</td>
+                                <td>{{data.rate}}</td>
+                                <td>{{data.cgst}}</td>
+                                <td>{{data.sgst}}</td>
+                                <td>{{data.igst}}</td>
+                                <td><span><button class="btn btn-success"(click)="editUnit(data.id)" >Edit</button></span> <span><button class="btn btn-danger" (click)="deleteUnit(data.id)">Delete</button></span></td>
                             </tr>
-                            <tr>
-                                <td>02</td>
-                                <td>Treatment 2</td>
-                                <td>MM</td>
-                                <td>Anodising</td>
-                                <td>Anodising</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>Treatment 3</td>
-                                <td>CM</td>
-                                <td>Paint</td>
-                                <td>Paint</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>04</td>
-                                <td>Treatment 4</td>
-                                <td>Meter</td>
-                                <td>Sorting</td>
-                                <td>Sorting</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>05</td>
-                                <td>Treatment 5</td>
-                                <td>Ltr</td>
-                                <td>Retranfer</td>
-                                <td>Retranfer</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                     

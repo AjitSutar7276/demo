@@ -4,31 +4,44 @@
             <div class="card-header">
                 <strong>Job Process Master</strong>  
             </div>
+            <form [formGroup]="jobProcess">
             <div class="card-body">
-                <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid">
+                <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
                     <div class="form-group">
                         <label>Entry No.</label>
-                        <input class="form-control"  name="" placeholder="Entry No..">
+                        <input class="form-control"formControlName="id" placeholder="Entry No.." readonly>
                     </div>
                     <div class="form-group">
                         <label>Process Name * </label>
-                        <input class="form-control"  name="" placeholder="Enter Process Name..">
+                        <input class="form-control"formControlName="process_name" placeholder="Enter Process Name.." required>
+                        <div *ngIf="process_name.invalid && (process_name.dirty || process_name.touched)"class="alert alert-danger">
+                            <div *ngIf="process_name.errors.required">
+                                Process Name is required.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Process Place * </label>
-                        <select class="form-control" id="select1" name="select1">
-                            <option value="0">Select Process Place</option>
+                        <select class="form-control" formControlName="process_place" required>
+                            <option value="0" selected disabled>Select Process Place</option>
                             <option value="1">Inside</option>
                             <option value="2">Outside</option>
                         </select>
+                        <div *ngIf="process_place.invalid && (process_place.dirty || process_place.touched)"class="alert alert-danger">
+                            <div *ngIf="process_place.errors.required">
+                                Process place is required.
+                            </div>
+                        </div>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="submitShow" class="btn btn-sm btn-primary" [disabled]="!jobProcess.valid" type="submit" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="updateShow"class="btn btn-sm btn-primary" [disabled]="!jobProcess.valid" type="submit" (click)="updateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
                 <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
             </div>
+            </form>
         </div>
     </div>
 
@@ -49,36 +62,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Process 1</td>
-                            <td>Inside</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        <tr *ngFor="let data of jobArray;let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{data.process_name}}</td>
+                            <td>{{data.process_place}}</td>
+                            <td><span><button class="btn btn-success"(click)="editUnit(data.id)" >Edit</button></span> <span><button class="btn btn-danger" (click)="deleteUnit(data.id)">Delete</button></span></td>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Process 2</td>
-                            <td>Outside</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Process 3</td>
-                            <td>Inside</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>Process 4</td>
-                            <td>Inside</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>Process 5</td>
-                            <td>Outside</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
+                        
                     </tbody>
                 </table>
                 

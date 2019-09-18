@@ -5,20 +5,27 @@
                 <strong>Unit</strong> Master 
             </div>
             <div class="card-body">
-                <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid">
+                <form [formGroup]="unitForm" >
                     <div class="form-group">
                         <label>Unit ID</label>
-                        <input class="form-control"  name="" placeholder="Unit ID..">
+                        <input class="form-control" formControlName="ID" name="" readonly placeholder="Unit ID..">
                     </div>
                     <div class="form-group">
                         <label>Format * <span class="plchld">(Eg. Ltr, Kg, Meter)</span></label>
-                        <input class="form-control"  name="" placeholder="Enter Format..">
+                        <input class="form-control" formControlName="unit"  name="" placeholder="Enter Format.." required>
+                        <div *ngIf="unit.invalid && (unit.dirty || unit.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="unit.errors.required">
+                                unit is required.
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="submitShow" [disabled]="!unitForm.valid" class="btn btn-sm btn-primary"  type="submit" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="updateShow" class="btn btn-sm btn-primary"[disabled]="!unitForm.valid"  type="submit" (click)="UpdateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
                 <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
             </div>
         </div>
@@ -40,31 +47,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>KG</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        <tr *ngFor = "let data of unitarray">
+                            <td>{{data.id}}</td>
+                            <td>{{data.unit}}</td>
+                            <td><span ><button class="btn btn-success" (click)="editUnit(data.id)">Edit</button></span> <span></span><button class="btn btn-danger" (click)="deleteUnit(data.id)">Delete</button></td>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Gram</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Meter</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>KM</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>MM</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
+                        
                     </tbody>
                 </table>
                 <ul class="pagination">

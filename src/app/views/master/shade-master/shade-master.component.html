@@ -4,27 +4,40 @@
                 <div class="card-header">
                     <strong>Shade</strong> Master 
                 </div>
-                <div class="card-body">
-                    <!-- <form> -->
-                        <div class="form-group">
-                            <label>Shade No.</label>
-                            <input class="form-control"  name="" placeholder="Shade No..">
-                        </div>
-                        <div class="form-group">
-                            <label>Shade Name * </label>
-                            <input class="form-control"  name="" placeholder="Enter Shade Name..">
-                        </div>
-                        <div class="form-group">
-                            <label>Process For </label>
-                            <input class="form-control"  name="" placeholder="Enter Process For..">
-                        </div>
-                    <!-- </form> -->
-                </div>
+                <form [formGroup]="shadeForm">
+                    <div class="card-body">
+                        
+                            <div class="form-group">
+                                <label>Shade No.</label>
+                                <input class="form-control" formControlName="id"  name="" placeholder="Shade No.." readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Shade Name * </label>
+                                <input class="form-control" formControlName="shade"  name="" placeholder="Enter Shade Name.." required>
+                                <div *ngIf="shade.invalid && (shade.dirty || shade.touched)"class="alert alert-danger">
+                                    <div *ngIf="shade.errors.required">
+                                        shade is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Process For </label>
+                                <input class="form-control" formControlName="process"  name="" placeholder="Enter Process For.." required>
+                                <div *ngIf="process.invalid && (process.dirty || process.touched)"class="alert alert-danger">
+                                    <div *ngIf="process.errors.required">
+                                        process is required.
+                                    </div>
+                                </div>
+                            </div>
+                    
+                    </div>
     
-                <div class="card-footer">
-                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
-                    <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
-                </div>
+                    <div class="card-footer">
+                        <button *ngIf="submitShow" [disabled]="!shadeForm.valid" class="btn btn-sm btn-primary" type="submit" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                        <button *ngIf="updateShow" class="btn btn-sm btn-primary" type="submit" (click)="updateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
+                        <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
+                    </div>
+                 </form>
             </div>
         </div>
     
@@ -45,46 +58,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Pink</td>
-                                <td>Chemical</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                            <tr *ngFor="let data of shadeArray; let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{data.shade_name}}</td>
+                                <td>{{data.process_for}}</td>
+                                <td><span><button class="btn btn-success" (click)="editUnit(data.id)">Edit</button></span> <span><button class="btn btn-danger" (click)="deleteUnit(data.id)">Delete</button></span></td>
                             </tr>
-                            <tr>
-                                <td>02</td>
-                                <td>Red</td>
-                                <td>Anodising</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>Black</td>
-                                <td>Paint</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>04</td>
-                                <td>Green</td>
-                                <td>Sorting</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>05</td>
-                                <td>Yellow</td>
-                                <td>Retranfer</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
+                            
                         </tbody>
                     </table>
-                    <ul class="pagination">
+                    <!-- <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#">4</a></li>
                         <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
