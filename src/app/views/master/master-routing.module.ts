@@ -5,6 +5,8 @@ import {ShadeMasterComponent} from './shade-master/shade-master.component';
 import {SurfaceTreMasterComponent} from './surface-tre-master/surface-tre-master.component';
 import {JobProcessMasterComponent} from './job-process-master/job-process-master.component';
 import {JobMasterComponent} from './job-master/job-master.component';
+import {RawMaterialMasterComponent} from './raw-material-master/raw-material-master.component';
+import {MachineMasterComponent} from './machine-master/machine-master.component';
 
 
 const routes: Routes = [{
@@ -53,6 +55,22 @@ const routes: Routes = [{
         component: JobMasterComponent,
         data: {
           title: 'Job Master'
+        }
+      },
+
+      {
+        path: 'rawMaster',
+        component: RawMaterialMasterComponent,
+        data: {
+          title: 'Raw Master'
+        }
+      },
+
+      {
+        path: 'machineMaster',
+        component: MachineMasterComponent,
+        data: {
+          title: 'Machine Master'
         }
       },
      

@@ -9,9 +9,11 @@ import { JobProcessMasterComponent } from './job-process-master/job-process-mast
 import { SurfaceTreMasterComponent } from './surface-tre-master/surface-tre-master.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { RawMaterialMasterComponent } from './raw-material-master/raw-material-master.component';
+import { MachineMasterComponent } from './machine-master/machine-master.component';
 
 @NgModule({
-  declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent],
+  declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
   imports: [
     CommonModule,
     MasterRoutingModule,

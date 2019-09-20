@@ -68,6 +68,16 @@ export const navItems: NavData[] = [
           name:'Surface Treatment Master',
           url :'/Master/surfaceTreMaster',
           icon :'con-drop'
+        },
+        {
+          name:'Raw Material Master',
+          url :'/Master/rawMaster',
+          icon :'con-drop'
+        },
+        {
+          name:'Machine Master',
+          url :'/Master/machineMaster',
+          icon :'con-drop'
         }
         
       ]

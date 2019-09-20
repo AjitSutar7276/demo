@@ -1,0 +1,331 @@
+<div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Raw Material Master</strong> 
+                </div>
+                <div class="card-body">
+    
+                        <div class="row">
+                                <div class="col-sm-6">
+                                        <div class="form-group">
+                                                <label>Item Code</label>
+                                                <input class="form-control"  name="" placeholder="Item Code..">
+                                        </div>
+                                        <div class="form-group">
+                                                <label>Item Name *</label>
+                                                <input class="form-control"  name="" placeholder="Item Name..">
+                                        </div>
+                                </div>
+                                <div class="col-sm-6">
+                                        <label>Select Photo</label>
+                                        <input class="form-control" id="file-input" name="file-input" type="file">
+                                        <br>
+                                        Image Preview
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label>Item Type * </label>
+                                <select class="form-control" formControlName="process_place" required>
+                                    <option value="0" selected disabled>Select Type</option>
+                                    <option value="1">Val 1</option>
+                                    <option value="2">Val 2</option>
+                                </select>
+                            </div>
+                    
+                            <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Unit *</label>
+                                            <select class="form-control" formControlName="process_place" required>
+                                                    <option value="0" selected disabled>Select Unit</option>
+                                                    <option value="1">Val 1</option>
+                                                    <option value="2">Val 2</option>
+                                                </select>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>HSN </label>
+                                            <input class="form-control" formControlName="id" placeholder="HSN.." > 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Used In *</label>
+                                                <select class="form-control" formControlName="process_place" required>
+                                                        <option value="0" selected disabled>Select Type</option>
+                                                        <option value="1">Val 1</option>
+                                                        <option value="2">Val 2</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Category *</label>
+                                                <select class="form-control" formControlName="process_place" required>
+                                                        <option value="0" selected disabled>Select Type</option>
+                                                        <option value="1">Val 1</option>
+                                                        <option value="2">Val 2</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Weight *</label>
+                                                    <input class="form-control" formControlName="id" placeholder="Weight.." > 
+                                                </div>
+                                            </div>
+                    
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Sq Feet *</label>
+                                                    <input class="form-control" formControlName="id" placeholder="Sq Feet.." > 
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Purchase Rate</label>
+                                                        <input class="form-control" formControlName="id" placeholder="Purchase Rate.." > 
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Sale Rate</label>
+                                                        <input class="form-control" formControlName="id" placeholder="Sale Rate.." > 
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label>Op Stock</label>
+                                                            <input class="form-control" formControlName="id" placeholder="Op Stock.." > 
+                                                        </div>
+                                                    </div>
+                            
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Thinkness</label>
+                                                            <input class="form-control" formControlName="id" placeholder="Thinkness.." > 
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>Min Level</label>
+                                                                <input class="form-control" formControlName="id" placeholder="Min Level.." > 
+                                                            </div>
+                                                        </div>
+                                
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Max Level</label>
+                                                                <input class="form-control" formControlName="id" placeholder="Max Level.." > 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label>CGST %</label>
+                                                                    <input class="form-control" formControlName="cgst"  placeholder="CGST..">
+                                                                </div>
+                                                            </div>
+                                        
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label>SGST %</label>
+                                                                    <input class="form-control" formControlName="sgst"  placeholder="SGST..">
+                                                                </div>
+                                                            </div>
+                                    
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label>IGST %</label>
+                                                                    <input class="form-control" formControlName="igst"  placeholder="IGST..">
+                                                                </div>
+                                                            </div>
+                                    
+                                                        </div>
+
+
+                      
+                </div>
+    
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                    <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i>Raw Material Master Records
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Item Code</th>
+                                <th>Item Name</th>
+                                <th>Type</th>
+                                <th>Unit</th>
+                                <th>HSN</th>
+                                <th>Used In</th>
+                                <th>Category</th>
+                                <th>Weight</th>
+                                <th>Sq.Feet</th>
+                                <th>Purchase Rate</th>
+                                <th>Sale Rate</th>
+                                <th>Op Stock</th>
+                                <th>Thinkness</th>
+                                <th>Min Level</th>
+                                <th>Max Level</th>
+                                <th>CGST</th>
+                                <th>SGST</th>
+                                <th>IGST</th>
+
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>01</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>Treatment 2</td>
+                                <td>MM</td>
+                                <td>Anodising</td>
+                                <td>Anodising</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>01</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>Treatment 3</td>
+                                <td>CM</td>
+                                <td>Paint</td>
+                                <td>Paint</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>01</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>Treatment 4</td>
+                                <td>Meter</td>
+                                <td>Sorting</td>
+                                <td>Sorting</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>01</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>Treatment 5</td>
+                                <td>Ltr</td>
+                                <td>Retranfer</td>
+                                <td>Retranfer</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>01</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Chemical</td>
+                                <td>Treatment 1</td>
+                                <td>KG</td>
+                                <td>Chemical</td>
+                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    
+    
+    
+       
+    </div>
+    
+    
+    
