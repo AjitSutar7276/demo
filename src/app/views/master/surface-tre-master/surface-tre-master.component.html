@@ -4,40 +4,61 @@
             <div class="card-header">
                 <strong>Surface Treatment Master</strong> 
             </div>
+            <form [formGroup]="surfaceForm">
             <div class="card-body">
-                <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
+               
                     <div class="form-group">
                         <label>Surface Treatment No.</label>
-                        <input class="form-control"  name="" placeholder="Treatment No..">
+                        <input class="form-control" formControlName="id" placeholder="Treatment No.." readonly>
                     </div>
                     <div class="form-group">
                         <label>Surface Treatment *</label>
-                        <input class="form-control"  name="" placeholder="Surface Treatment..">
+                        <input class="form-control"  formControlName="surfaceName" placeholder="Surface Treatment.." required>
+                        <div *ngIf="surfaceName.invalid && (surfaceName.dirty || surfaceName.touched)"class="alert alert-danger">
+                            <div *ngIf="surfaceName.errors.required">
+                                Surface Name is required.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Unit In </label>
-                        <select class="form-control" id="select1" name="select1">
-                            <option value="0">Select Unit In</option>
-                            <option value="1">Option #1</option>
-                            <option value="2">Option #2</option>
-                            <option value="3">Option #3</option>
+                        <select class="form-control" formControlName="unit" required>
+                            <option *ngFor="let data of unitArray" value="{{data.id}}">{{data.unit}}</option>
                         </select>
+                        <div *ngIf="unit.invalid && (unit.dirty || unit.touched)"class="alert alert-danger">
+                            <div *ngIf="unit.errors.required">
+                                Unit is required.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Purchase Rate </label>
-                        <input class="form-control"  name="" placeholder="Enter Purchase Rate..">
+                        <input class="form-control" formControlName="pur_rate" placeholder="Enter Purchase Rate.." required>
+                        <div *ngIf="pur_rate.invalid && (pur_rate.dirty || pur_rate.touched)"class="alert alert-danger">
+                            <div *ngIf="pur_rate.errors.required">
+                                Purchase rate is required.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Sale Rate </label>
-                        <input class="form-control"  name="" placeholder="Enter Sale Rate..">
+                        <input class="form-control"  formControlName="sale_rate" placeholder="Enter Sale Rate.." required>
+                        <div *ngIf="sale_rate.invalid && (sale_rate.dirty || sale_rate.touched)"class="alert alert-danger">
+                            <div *ngIf="sale_rate.errors.required">
+                               Sales rate is required.
+                            </div>
+                        </div>
                     </div>
                 <!-- </form> -->
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="submitShow" class="btn btn-sm btn-primary" type="submit" [disabled]="!surfaceForm.valid" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="updateShow" class="btn btn-sm btn-primary" type="submit" [disabled]="!surfaceForm.valid" (click)="updateData()"><i class="fa fa-dot-circle-o"></i>Update</button>
+
                 <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
             </div>
+            </form>
         </div>
     </div>
 
@@ -60,46 +81,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Treatment 1</td>
-                            <td>KG</td>
-                            <td>Chemical</td>
-                            <td>Chemical</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        <tr *ngFor="let data of surfaceArray;let i = index;">
+                            <td>{{i +1}}</td>
+                            <td>{{data.surface_treatment}}</td>
+                            <td>{{data.unit_in}}</td>
+                            <td>{{data.purchase_rate}}</td>
+                            <td>{{data.sale_rate}}</td>
+                            <td><span><button class="btn btn-success" (click)="editSurface(data.id)">Edit</button></span> <span><button class="btn btn-danger" (click)="deleteSurface(data.id)">Delete</button></span></td>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Treatment 2</td>
-                            <td>MM</td>
-                            <td>Anodising</td>
-                            <td>Anodising</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Treatment 3</td>
-                            <td>CM</td>
-                            <td>Paint</td>
-                            <td>Paint</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>Treatment 4</td>
-                            <td>Meter</td>
-                            <td>Sorting</td>
-                            <td>Sorting</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>Treatment 5</td>
-                            <td>Ltr</td>
-                            <td>Retranfer</td>
-                            <td>Retranfer</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
+                        
                     </tbody>
                 </table>
                 
