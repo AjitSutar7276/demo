@@ -3,16 +3,17 @@
 
 // Import styles
 @import "~@coreui/coreui/scss/coreui";
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
 // If you want to add something do it here
 @import "custom";
 
 @font-face {
-    font-family: myFirstFont;
+    font-family: 'Josefin Sans', sans-serif;
     src: url(../assets/font/RobotoCondensed-Regular.ttf);
   }
   *{
-      font-family: myFirstFont;
+      font-family: 'Josefin Sans', sans-serif;
       font-size: 15px;
   }
 
@@ -30,4 +31,21 @@
 
 .plchld{
     color: #a9a6a6;
+}
+
+.navbar-nav .nav-link {
+    color: black;
+}
+
+.breadcrumb-item.active {
+    color: black;
+}
+
+.card {
+    border: 1px solid #0000008c;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+}
+
+.form-control{
+    border: 1px solid #0000005c;
 }
