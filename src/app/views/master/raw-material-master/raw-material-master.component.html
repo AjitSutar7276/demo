@@ -4,61 +4,42 @@
                 <div class="card-header">
                     <strong>Raw Material Master</strong> 
                 </div>
-                <div class="card-body">
-    
-                        <div class="row">
-                                <div class="col-sm-6">
-                                        <div class="form-group">
-                                                <label>Item Code</label>
-                                                <input class="form-control"  name="" placeholder="Item Code..">
-                                        </div>
-                                        <div class="form-group">
-                                                <label>Item Name *</label>
-                                                <input class="form-control"  name="" placeholder="Item Name..">
-                                        </div>
-                                </div>
-                                <div class="col-sm-6">
-                                        <label>Select Photo</label>
-                                        <input class="form-control" id="file-input" name="file-input" type="file">
-                                        <br>
-                                        Image Preview
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <label>Item Type * </label>
-                                <select class="form-control" formControlName="process_place" required>
-                                    <option value="0" selected disabled>Select Type</option>
-                                    <option value="1">Val 1</option>
-                                    <option value="2">Val 2</option>
-                                </select>
-                            </div>
-                    
+                <form [formGroup]="rawMaterialForm">
+                    <div class="card-body">
+        
                             <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Unit *</label>
-                                            <select class="form-control" formControlName="process_place" required>
-                                                    <option value="0" selected disabled>Select Unit</option>
-                                                    <option value="1">Val 1</option>
-                                                    <option value="2">Val 2</option>
-                                                </select>
-                                        </div>
+                                            <div class="form-group">
+                                                    <label>Item Code</label>
+                                                    <input class="form-control"  formControlName="id"  placeholder="Item Code..">
+                                            </div>
+                                            <div class="form-group">
+                                                    <label>Item Name *</label>
+                                                    <input class="form-control" formControlName="itemName"   placeholder="Item Name..">
+                                            </div>
                                     </div>
-            
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>HSN </label>
-                                            <input class="form-control" formControlName="id" placeholder="HSN.." > 
-                                        </div>
+                                    <div class="col-sm-6">
+                                            <label>Select Photo</label>
+                                            <input class="form-control" id="file-input" name="file-input" type="file">
+                                            <br>
+                                            Image Preview
                                     </div>
+                            </div>
+                            <div class="form-group">
+                                    <label>Item Type * </label>
+                                    <select class="form-control" formControlName="itmeType" required>
+                                        <option value="0" selected disabled>Select Type</option>
+                                        <option value="1">Val 1</option>
+                                        <option value="2">Val 2</option>
+                                    </select>
                                 </div>
-
+                        
                                 <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Used In *</label>
-                                                <select class="form-control" formControlName="process_place" required>
-                                                        <option value="0" selected disabled>Select Type</option>
+                                                <label>Unit *</label>
+                                                <select class="form-control" formControlName="unit" required>
+                                                        <option value="0" selected disabled>Select Unit</option>
                                                         <option value="1">Val 1</option>
                                                         <option value="2">Val 2</option>
                                                     </select>
@@ -67,44 +48,48 @@
                 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Category *</label>
-                                                <select class="form-control" formControlName="process_place" required>
-                                                        <option value="0" selected disabled>Select Type</option>
-                                                        <option value="1">Val 1</option>
-                                                        <option value="2">Val 2</option>
-                                                    </select>
+                                                <label>HSN </label>
+                                                <input class="form-control" formControlName="HSN" placeholder="HSN.." > 
                                             </div>
                                         </div>
                                     </div>
-    
+
                                     <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Weight *</label>
-                                                    <input class="form-control" formControlName="id" placeholder="Weight.." > 
+                                                    <label>Used In *</label>
+                                                    <select class="form-control" formControlName="Used_in" required>
+                                                            <option value="0" selected disabled>Select Type</option>
+                                                            <option value="1">Val 1</option>
+                                                            <option value="2">Val 2</option>
+                                                        </select>
                                                 </div>
                                             </div>
                     
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Sq Feet *</label>
-                                                    <input class="form-control" formControlName="id" placeholder="Sq Feet.." > 
+                                                    <label>Category *</label>
+                                                    <select class="form-control" formControlName="category" required>
+                                                            <option value="0" selected disabled>Select Type</option>
+                                                            <option value="1">Val 1</option>
+                                                            <option value="2">Val 2</option>
+                                                        </select>
                                                 </div>
                                             </div>
                                         </div>
-
+        
                                         <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label>Purchase Rate</label>
-                                                        <input class="form-control" formControlName="id" placeholder="Purchase Rate.." > 
+                                                        <label>Weight *</label>
+                                                        <input class="form-control" formControlName="weight" placeholder="Weight.." > 
                                                     </div>
                                                 </div>
                         
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>Sale Rate</label>
-                                                        <input class="form-control" formControlName="id" placeholder="Sale Rate.." > 
+                                                        <label>Sq Feet *</label>
+                                                        <input class="form-control" formControlName="feet" placeholder="Sq Feet.." > 
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,15 +97,15 @@
                                             <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label>Op Stock</label>
-                                                            <input class="form-control" formControlName="id" placeholder="Op Stock.." > 
+                                                            <label>Purchase Rate</label>
+                                                            <input class="form-control" formControlName="pur_rate" placeholder="Purchase Rate.." > 
                                                         </div>
                                                     </div>
                             
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label>Thinkness</label>
-                                                            <input class="form-control" formControlName="id" placeholder="Thinkness.." > 
+                                                            <label>Sale Rate</label>
+                                                            <input class="form-control" formControlName="sale_rate" placeholder="Sale Rate.." > 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -128,52 +113,69 @@
                                                 <div class="row">
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
-                                                                <label>Min Level</label>
-                                                                <input class="form-control" formControlName="id" placeholder="Min Level.." > 
+                                                                <label>Op Stock</label>
+                                                                <input class="form-control" formControlName="op_stock" placeholder="Op Stock.." > 
                                                             </div>
                                                         </div>
                                 
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label>Max Level</label>
-                                                                <input class="form-control" formControlName="id" placeholder="Max Level.." > 
+                                                                <label>Thinkness</label>
+                                                                <input class="form-control" formControlName="thinkness" placeholder="Thinkness.." > 
                                                             </div>
                                                         </div>
                                                     </div>
 
-
                                                     <div class="row">
-                                                            <div class="col-md-4">
+                                                            <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label>CGST %</label>
-                                                                    <input class="form-control" formControlName="cgst"  placeholder="CGST..">
-                                                                </div>
-                                                            </div>
-                                        
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label>SGST %</label>
-                                                                    <input class="form-control" formControlName="sgst"  placeholder="SGST..">
+                                                                    <label>Min Level</label>
+                                                                    <input class="form-control" formControlName="minLevel" placeholder="Min Level.." > 
                                                                 </div>
                                                             </div>
                                     
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label>IGST %</label>
-                                                                    <input class="form-control" formControlName="igst"  placeholder="IGST..">
+                                                                    <label>Max Level</label>
+                                                                    <input class="form-control" formControlName="maxLevel" placeholder="Max Level.." > 
                                                                 </div>
                                                             </div>
-                                    
                                                         </div>
 
 
-                      
-                </div>
-    
-                <div class="card-footer">
-                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
-                    <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
-                </div>
+                                                        <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>CGST %</label>
+                                                                        <input class="form-control" formControlName="cgst"  placeholder="CGST..">
+                                                                    </div>
+                                                                </div>
+                                            
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>SGST %</label>
+                                                                        <input class="form-control" formControlName="sgst"  placeholder="SGST..">
+                                                                    </div>
+                                                                </div>
+                                        
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>IGST %</label>
+                                                                        <input class="form-control" formControlName="igst"  placeholder="IGST..">
+                                                                    </div>
+                                                                </div>
+                                        
+                                                            </div>
+
+
+                        
+                    </div>
+        
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                        <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
     

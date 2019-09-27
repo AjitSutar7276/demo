@@ -7,13 +7,13 @@ import { ShadeMasterComponent } from './shade-master/shade-master.component';
 import { JobMasterComponent } from './job-master/job-master.component';
 import { JobProcessMasterComponent } from './job-process-master/job-process-master.component';
 import { SurfaceTreMasterComponent } from './surface-tre-master/surface-tre-master.component';
-
+import { FileSelectDirective } from 'ng2-file-upload';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RawMaterialMasterComponent } from './raw-material-master/raw-material-master.component';
 import { MachineMasterComponent } from './machine-master/machine-master.component';
 
 @NgModule({
-  declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
+  declarations: [FileSelectDirective,UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
   imports: [
     CommonModule,
     MasterRoutingModule,

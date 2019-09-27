@@ -4,24 +4,30 @@
             <div class="card-header">
                 <strong>Machine Master</strong> 
             </div>
+            <form [formGroup] = "MachineForm">
             <div class="card-body">
 
                     <div class="row">
                             <div class="col-sm-6">
                                     <div class="form-group">
                                             <label>Machine No.</label>
-                                            <input class="form-control"  name="" placeholder="Machine No..">
+                                            <input class="form-control" formControlName="id" placeholder="Machine No.." readonly>
                                     </div>
                                     <div class="form-group">
                                             <label>Machine Name *</label>
-                                            <input class="form-control"  name="" placeholder="Machine Name..">
+                                            <input class="form-control" formControlName="Machine_name" placeholder="Machine Name..">
                                     </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                     <label>Select Photo</label>
-                                    <input class="form-control" id="file-input" name="file-input" type="file">
+                                    <!-- <input class="form-control" id="file-input" type="file"> -->
+                                    <input type="file" name="photo"  (change)="onSelectFile($event)" ng2FileSelect [uploader]="uploader" formControlName="image" />
                                     <br>
                                     Image Preview
+                                    <img [src]="url"  style="width:200px;">
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-success" (click)="uploader.uploadAll()">Upload File</button>
                             </div>
                     </div>
 
@@ -29,19 +35,19 @@
 
                     <div class="form-group">
                         <label>Description </label>
-                        <input class="form-control"  name="" placeholder="Description..">
+                        <input class="form-control" formControlName="Description" placeholder="Description..">
                     </div>
                     <div class="form-group">
                         <label>Make </label>
-                        <input class="form-control"  name="" placeholder="Make..">
+                        <input class="form-control" formControlName="Make" placeholder="Make..">
                     </div>
                     <div class="form-group">
                         <label>Capacity </label>
-                        <input class="form-control"  name="" placeholder="Capacity..">
+                        <input class="form-control" formControlName="capacity" placeholder="Capacity..">
                     </div>
                     <div class="form-group">
                         <label>Process </label>
-                        <select class="form-control" formControlName="process_place" required>
+                        <select class="form-control" formControlName="process" required>
                             <option value="0" selected disabled>Select Process</option>
                             <option value="1">Val 1</option>
                             <option value="2">Val 2</option>
@@ -51,23 +57,26 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Purchase Date</label>
-                                <input class="form-control" id="date-input" name="date-input" placeholder="Purchase Date.." type="date">
+                                <input class="form-control" id="date-input" formControlName="pur_date" placeholder="Purchase Date.." type="date">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Warranty</label>
-                                <input class="form-control" formControlName="id" placeholder="Warranty.." > Months
+                                <input class="form-control" formControlName="Warranty" placeholder="Warranty.." > Months
                             </div>
                         </div>
                     </div>
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
-                <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
+                <button *ngIf="submitShow"class="btn btn-sm btn-primary" type="submit" (click)="submitData();"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="updateShow"class="btn btn-sm btn-primary" type="submit" (click)="updateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
+
+                <button class="btn btn-sm btn-danger" type="submit" (click)="CancelData()"><i class="fa fa-ban" ></i> Cancel</button>
             </div>
+            </form>
         </div>
     </div>
 
@@ -93,60 +102,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Treatment 1</td>
-                            <td>KG</td>
-                            <td>Chemical</td>
-                            <td>Chemical</td>
-                            <td>Chemical</td>
-                            <td>Chemical</td>
-                            <td>Treatment 1</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Treatment 2</td>
-                            <td>MM</td>
-                            <td>Anodising</td>
-                            <td>Anodising</td>
-                            <td>Chemical</td>
-                            <td>Chemical</td>
-                            <td>Treatment 1</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Treatment 3</td>
-                            <td>CM</td>
-                            <td>Paint</td>
-                            <td>Paint</td>
-                            <td>Chemical</td>
-                            <td>Chemical</td>
-                            <td>Treatment 1</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>Treatment 4</td>
-                            <td>Meter</td>
-                            <td>Sorting</td>
-                            <td>Sorting</td>
-                            <td>Chemical</td>
-                            <td>Chemical</td>
-                            <td>Treatment 1</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>Treatment 5</td>
-                            <td>Ltr</td>
-                            <td>Retranfer</td>
-                            <td>Retranfer</td>
-                            <td>Chemical</td>
-                            <td>Chemical</td>
-                            <td>Treatment 1</td>
-                            <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
+                        <tr *ngFor="let data of machineData;let i = index;">
+                            <td>{{i+1}}</td>
+                            <td>{{data.machine_name}}</td>
+                            <td>{{data.description}}</td>
+                            <td>{{data.make}}</td>
+                            <td>{{data.capacity}}</td>
+                            <td>{{data.process}}</td>
+                            <td>{{data.purchase_date}}</td>
+                            <td>{{data.warranty}}</td>
+                            <td><span><button class="btn btn-success" (click)="editMachine(data.machine_id)">Edit</button></span> <span><button class="btn btn-danger" (click)="deleteMachine(data.machine_id)">Delete</button></span></td>
                         </tr>
                     </tbody>
                 </table>
