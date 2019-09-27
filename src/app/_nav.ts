@@ -43,42 +43,49 @@ export const navItems: NavData[] = [
       children: [
         {
           name: 'Unit Master',
-          url: '/Master/unit',
-          icon: 'con-drop'
+          url: '/Master/unit'
         },
         {
           name:'Shade Master',
-          url :'/Master/shade',
-          icon :'con-drop'
+          url :'/Master/shade'
         },
         {
           name:'Job Master',
-          url :'/Master/jobMaster',
-          icon :'con-drop'
+          url :'/Master/jobMaster'
         },
         {
           name:'Job Process Master',
-          url :'/Master/jobProcessMaster',
-          icon :'con-drop'
+          url :'/Master/jobProcessMaster'
         },
         {
           name:'Surface Treatment Master',
-          url :'/Master/surfaceTreMaster',
-          icon :'con-drop'
+          url :'/Master/surfaceTreMaster'
         },
         {
           name:'Raw Material Master',
-          url :'/Master/rawMaster',
-          icon :'con-drop'
+          url :'/Master/rawMaster'
         },
         {
           name:'Machine Master',
-          url :'/Master/machineMaster',
-          icon :'con-drop'
+          url :'/Master/machineMaster'
         }
         
       ]
-    }
+    },
+    {
+    name: 'Sales',
+    url: '/Sales',
+    icon: 'icon-cursor',
+    children: [
+      {
+        name: 'Party Master',
+        url: '/Sales/party'
+      },
+      {
+        name: 'Quotation Master',
+        url: '/Sales/quotation'
+      }
+    ]}
   
   // {
   //   name: 'Colors',
