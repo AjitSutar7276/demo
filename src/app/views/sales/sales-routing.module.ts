@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {PartyMasterComponent  } from './party-master/party-master.component';
 import {QuotationMasterComponent} from './quotation-master/quotation-master.component';
+import {OrderBookComponent} from './order-book/order-book.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,13 @@ const routes: Routes = [
         component: QuotationMasterComponent,
         data: {
           title: 'Quotation Master'
+        }
+      },
+      {
+        path: 'order',
+        component: OrderBookComponent,
+        data: {
+          title: 'Order Book'
         }
       }
     

@@ -2,37 +2,45 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <strong>Job Process Master</strong>  
+                <i class="fa fa-align-justify"></i><strong>Job Process Master</strong>  
             </div>
             <form [formGroup]="jobProcess">
             <div class="card-body">
                 <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
-                    <div class="form-group">
-                        <label>Entry No.</label>
-                        <input class="form-control"formControlName="id" placeholder="Entry No.." readonly>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Entry No.</label>
+                            <input class="form-control"formControlName="id" placeholder="Entry No.." readonly>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Process Name * </label>
-                        <input class="form-control"formControlName="process_name" placeholder="Enter Process Name.." required>
-                        <div *ngIf="process_name.invalid && (process_name.dirty || process_name.touched)"class="alert alert-danger">
-                            <div *ngIf="process_name.errors.required">
-                                Process Name is required.
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Process Name * </label>
+                            <input class="form-control"formControlName="process_name" placeholder="Enter Process Name.." required>
+                            <div *ngIf="process_name.invalid && (process_name.dirty || process_name.touched)"class="alert alert-danger">
+                                <div *ngIf="process_name.errors.required">
+                                    Process Name is required.
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Process Place * </label>
-                        <select class="form-control" formControlName="process_place" required>
-                            <option value="0" selected disabled>Select Process Place</option>
-                            <option value="1">Inside</option>
-                            <option value="2">Outside</option>
-                        </select>
-                        <div *ngIf="process_place.invalid && (process_place.dirty || process_place.touched)"class="alert alert-danger">
-                            <div *ngIf="process_place.errors.required">
-                                Process place is required.
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Process Place * </label>
+                            <select class="form-control" formControlName="process_place" required>
+                                <option value="0" selected disabled>Select Process Place</option>
+                                <option value="1">Inside</option>
+                                <option value="2">Outside</option>
+                            </select>
+                            <div *ngIf="process_place.invalid && (process_place.dirty || process_place.touched)"class="alert alert-danger">
+                                <div *ngIf="process_place.errors.required">
+                                    Process place is required.
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 <!-- </form> -->
             </div>
 
@@ -49,7 +57,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-align-justify"></i> Job Process Master Records
+                <i class="fa fa-align-justify"></i><strong>Records</strong>  
             </div>
             <div class="card-body">
                 <table class="table table-bordered">

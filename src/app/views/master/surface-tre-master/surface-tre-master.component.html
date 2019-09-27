@@ -2,53 +2,67 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <strong>Surface Treatment Master</strong> 
+                <i class="fa fa-align-justify"></i><strong>Surface Treatment Master</strong> 
             </div>
             <form [formGroup]="surfaceForm">
             <div class="card-body">
-               
-                    <div class="form-group">
-                        <label>Surface Treatment No.</label>
-                        <input class="form-control" formControlName="id" placeholder="Treatment No.." readonly>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Surface Treatment No.</label>
+                            <input class="form-control" formControlName="id" placeholder="Treatment No.." readonly>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Surface Treatment *</label>
-                        <input class="form-control"  formControlName="surfaceName" placeholder="Surface Treatment.." required>
-                        <div *ngIf="surfaceName.invalid && (surfaceName.dirty || surfaceName.touched)"class="alert alert-danger">
-                            <div *ngIf="surfaceName.errors.required">
-                                Surface Name is required.
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Surface Treatment *</label>
+                            <input class="form-control"  formControlName="surfaceName" placeholder="Surface Treatment.." required>
+                            <div *ngIf="surfaceName.invalid && (surfaceName.dirty || surfaceName.touched)"class="alert alert-danger">
+                                <div *ngIf="surfaceName.errors.required">
+                                    Surface Name is required.
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Unit In </label>
-                        <select class="form-control" formControlName="unit" required>
-                            <option *ngFor="let data of unitArray" value="{{data.id}}">{{data.unit}}</option>
-                        </select>
-                        <div *ngIf="unit.invalid && (unit.dirty || unit.touched)"class="alert alert-danger">
-                            <div *ngIf="unit.errors.required">
-                                Unit is required.
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Unit In </label>
+                            <select class="form-control" formControlName="unit" required>
+                                <option *ngFor="let data of unitArray" value="{{data.id}}">{{data.unit}}</option>
+                            </select>
+                            <div *ngIf="unit.invalid && (unit.dirty || unit.touched)"class="alert alert-danger">
+                                <div *ngIf="unit.errors.required">
+                                    Unit is required.
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Purchase Rate </label>
-                        <input class="form-control" formControlName="pur_rate" placeholder="Enter Purchase Rate.." required>
-                        <div *ngIf="pur_rate.invalid && (pur_rate.dirty || pur_rate.touched)"class="alert alert-danger">
-                            <div *ngIf="pur_rate.errors.required">
-                                Purchase rate is required.
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Purchase Rate </label>
+                            <input class="form-control" formControlName="pur_rate" placeholder="Enter Purchase Rate.." required>
+                            <div *ngIf="pur_rate.invalid && (pur_rate.dirty || pur_rate.touched)"class="alert alert-danger">
+                                <div *ngIf="pur_rate.errors.required">
+                                    Purchase rate is required.
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Sale Rate </label>
-                        <input class="form-control"  formControlName="sale_rate" placeholder="Enter Sale Rate.." required>
-                        <div *ngIf="sale_rate.invalid && (sale_rate.dirty || sale_rate.touched)"class="alert alert-danger">
-                            <div *ngIf="sale_rate.errors.required">
-                               Sales rate is required.
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Sale Rate </label>
+                            <input class="form-control"  formControlName="sale_rate" placeholder="Enter Sale Rate.." required>
+                            <div *ngIf="sale_rate.invalid && (sale_rate.dirty || sale_rate.touched)"class="alert alert-danger">
+                                <div *ngIf="sale_rate.errors.required">
+                                Sales rate is required.
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 <!-- </form> -->
             </div>
 
@@ -66,7 +80,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-align-justify"></i>Surface Treatment Master Records
+                <i class="fa fa-align-justify"></i><strong>Records</strong> 
             </div>
             <div class="card-body">
                 <table class="table table-bordered">

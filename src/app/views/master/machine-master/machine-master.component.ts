@@ -83,7 +83,14 @@ export class MachineMasterComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = event.target.result;
+        if(event == undefined)
+        {
+
+        }
+        else
+        {
+             this.url = event.target.result;
+        }
       }
     }
 }

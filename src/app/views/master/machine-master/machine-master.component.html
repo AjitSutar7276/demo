@@ -2,29 +2,43 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <strong>Machine Master</strong> 
+                <i class="fa fa-align-justify"></i><strong>Machine Master</strong> 
             </div>
             <form [formGroup] = "MachineForm">
             <div class="card-body">
 
                     <div class="row">
                             <div class="col-sm-6">
-                                    <div class="form-group">
-                                            <label>Machine No.</label>
-                                            <input class="form-control" formControlName="id" placeholder="Machine No.." readonly>
+                                <div class="row"> 
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                                <label>Machine No.</label>
+                                                <input class="form-control" formControlName="id" placeholder="Machine No.." readonly>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                            <label>Machine Name *</label>
-                                            <input class="form-control" formControlName="Machine_name" placeholder="Machine Name..">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                                <label>Machine Name *</label>
+                                                <input class="form-control" formControlName="Machine_name" placeholder="Machine Name..">
+                                        </div>
                                     </div>
+                                </div>
+
+                                <div class="row"> 
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Description </label>
+                                            <input class="form-control" formControlName="Description" placeholder="Description..">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm-4">
                                     <label>Select Photo</label>
                                     <!-- <input class="form-control" id="file-input" type="file"> -->
                                     <input type="file" name="photo"  (change)="onSelectFile($event)" ng2FileSelect [uploader]="uploader" formControlName="image" />
                                     <br>
-                                    Image Preview
-                                    <img [src]="url"  style="width:200px;">
+                                    <img [src]="url" style="width:200px;margin-top: 5px; border-radius: 4px;">
                             </div>
                             <div class="col-sm-2">
                                 <button class="btn btn-success" (click)="uploader.uploadAll()">Upload File</button>
@@ -32,41 +46,46 @@
                     </div>
 
                 
-
-                    <div class="form-group">
-                        <label>Description </label>
-                        <input class="form-control" formControlName="Description" placeholder="Description..">
-                    </div>
-                    <div class="form-group">
-                        <label>Make </label>
-                        <input class="form-control" formControlName="Make" placeholder="Make..">
-                    </div>
-                    <div class="form-group">
-                        <label>Capacity </label>
-                        <input class="form-control" formControlName="capacity" placeholder="Capacity..">
-                    </div>
-                    <div class="form-group">
-                        <label>Process </label>
-                        <select class="form-control" formControlName="process" required>
-                            <option value="0" selected disabled>Select Process</option>
-                            <option value="1">Val 1</option>
-                            <option value="2">Val 2</option>
-                        </select>
-                    </div>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Purchase Date</label>
-                                <input class="form-control" id="date-input" formControlName="pur_date" placeholder="Purchase Date.." type="date">
-                            </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Warranty</label>
-                                <input class="form-control" formControlName="Warranty" placeholder="Warranty.." > Months
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Process </label>
+                                    <select class="form-control" formControlName="process" required>
+                                        <option value="0" selected disabled>Select Process</option>
+                                        <option value="1">Val 1</option>
+                                        <option value="2">Val 2</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
+                            
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label>Make </label>
+                                    <input class="form-control" formControlName="Make" placeholder="Make..">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label>Capacity </label>
+                                    <input class="form-control" formControlName="capacity" placeholder="Capacity..">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label>Purchase Date</label>
+                                    <input class="form-control" id="date-input" formControlName="pur_date" placeholder="Purchase Date.." type="date">
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Warranty (In Months)</label>
+                                    <input class="form-control" formControlName="Warranty" placeholder="Warranty.." > 
+                                </div>
+                            </div>
                     </div>
             </div>
 
@@ -84,7 +103,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-align-justify"></i>Machine Master Records
+                <i class="fa fa-align-justify"></i><strong> Records </strong>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">

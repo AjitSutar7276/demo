@@ -2,21 +2,21 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Job Master</strong> 
+                    <i class="fa fa-align-justify"></i><strong>Job Master</strong> 
                 </div>
                 <form [formGroup]="jobForm" >
                 <div class="card-body">
                     <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
                         
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label>Job No.</label>
                                     <input class="form-control" formControlName="id" placeholder="Job No.." readonly>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Art No</label>
                                     <input class="form-control" formControlName="ArtNo"   placeholder="Art No.." required>
@@ -28,11 +28,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-            
-                       
-                    
-                        <div class="row">
+
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Job Name</label>
@@ -45,26 +41,19 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
+                        </div>
+            
+                       
+                    
+                        <div class="row">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>HSN No</label>
                                     <input class="form-control" formControlName="HSN"  placeholder="HSN No..">
                                 </div>
                             </div>
-                        </div>
 
-         
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-control" id="textarea-input" formControlName="description" placeholder="Description.." rows="2"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Opening Stock</label>
                                     <input class="form-control" formControlName="openStock"   placeholder="Opening Stock.." required>
@@ -76,56 +65,62 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" id="textarea-input" formControlName="description" placeholder="Description.." rows="1"></textarea>
+                                </div>
+                            </div>
+
+
                         </div>
 
                         <div class="row">
-
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Min Level</label>
                                     <input class="form-control"  formControlName="MinStock"  placeholder="Min Level..">
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Max Level</label>
                                     <input class="form-control" formControlName="MaxStock"   placeholder="Max Level..">
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Rate</label>
                                     <input class="form-control" formControlName="Rate"   placeholder="Rate..">
                                 </div>
                             </div>
-                        </div>
 
-
-                        <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>CGST %</label>
                                     <input class="form-control" formControlName="cgst"  placeholder="CGST..">
                                 </div>
                             </div>
         
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>SGST %</label>
                                     <input class="form-control" formControlName="sgst"  placeholder="SGST..">
                                 </div>
                             </div>
     
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>IGST %</label>
                                     <input class="form-control" formControlName="igst"  placeholder="IGST..">
                                 </div>
                             </div>
-    
                         </div>
+
+
 
                     <!-- </form> -->
                 </div>
@@ -146,7 +141,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <i class="fa fa-align-justify"></i>Job Master Records
+                    <i class="fa fa-align-justify"></i><strong>Records</strong> 
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">

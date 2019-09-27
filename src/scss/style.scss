@@ -14,7 +14,7 @@
   }
   *{
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
   }
 
   .btn {
@@ -49,10 +49,17 @@
 .form-control{
     border: 1px solid #0000005c;
     border-radius: 0.15rem;
+    font-size: 13px;
 }
 
 .sidebar .nav-link {
-    padding: 0.75rem 0.4rem !important;
+    padding: 0.6rem 0.4rem !important;
+    border-bottom: 1px solid #3f3f50;
+    font-size: 14px;
+}
+
+.sidebar .nav-link.active {
+    color: #20a8d8 !important;
 }
 
 .main .container-fluid {
@@ -74,10 +81,12 @@ label {
 .card-header {
     padding: 0.5rem 1rem;
     padding-bottom: 4px;
+    background-color: #d8d8d8;
 }
 
 .card-footer {
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
 }
 
 .form-group {
@@ -90,5 +99,14 @@ label {
 
 .alert {
     padding: 2px 5px 0px 8px;
+    margin-bottom: 0rem;
+    text-transform: capitalize;
 }
 
+.no-padding{
+    padding: 0px;
+}
+
+.circle-type{
+    border-radius: 30px;
+}

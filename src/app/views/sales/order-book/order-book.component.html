@@ -1,0 +1,214 @@
+<div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i><strong>Order Book</strong> 
+                </div>
+                <form>
+                <div class="card-body">
+                    <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
+                        
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Code</label>
+                                    <input class="form-control" formControlName="code" placeholder="Code..">
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>PO No.</label>
+                                    <input class="form-control" formControlName="pono" placeholder="PO No..">
+                                </div>
+                            </div>
+    
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input class="form-control" id="date-input" formControlName="date" placeholder="Date.." type="date">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Quotation No.</label>
+                                        <input class="form-control" formControlName="code" placeholder="Code..">
+                                    </div>
+                                </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Customer Name</label>
+                                    <select class="form-control" formControlName="name" required>
+                                        <option value="0" selected disabled>Select Name</option>
+                                        <option value="1">Name 1</option>
+                                        <option value="2">Name 2</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Priority</label>
+                                    <select class="form-control" formControlName="priority" required>
+                                        <option value="0" selected disabled>Select Priority</option>
+                                        <option value="1">High</option>
+                                        <option value="2">Low</option>
+                                        <option value="3">Medium</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Delivery Date</label>
+                                    <input class="form-control" id="date-input" formControlName="date" placeholder="Date.." type="date">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Job Name</label>
+                                    <input class="form-control" formControlName="jname" placeholder="Job Name..">
+                                </div>
+                            </div>
+    
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Art No</label>
+                                    <input class="form-control" formControlName="artno" placeholder="Art No..">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Size & Description</label>
+                                    <input class="form-control" formControlName="snd" placeholder="Size & Description..">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                       
+    
+    
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input class="form-control" formControlName="quantity" placeholder="Quantity..">
+                                </div>
+                            </div>
+    
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Rate</label>
+                                    <input class="form-control" formControlName="rate" placeholder="Rate..">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Surface Treatment</label>
+                                    <select class="form-control" formControlName="name" required>
+                                        <option value="0" selected disabled>Select Treatment</option>
+                                        <option value="1">Treatment 1</option>
+                                        <option value="2">Treatment 2</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <br/>
+                                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                    <!-- </form> -->
+                </div>
+    
+                </form> 
+            </div>
+        </div>
+    
+    
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i><strong> Records</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Job ID</th>
+                                <th>Job Name</th>
+                                <th>Art No</th>
+                                <th>Size</th>
+                                <th>Qty</th>
+                                <th>Rate</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                    <div class="row">
+                        <div class="col-sm-4">
+                            
+                        </div>
+    
+                        <div class="col-md-8">
+                            <div class="form-group" style="text-align: right;">
+                                <label>Total</label> &nbsp;&nbsp; <input style="width: 183px;" class="" formControlName="" placeholder="">
+                                <br>
+                                <label>Excise Duty</label> &nbsp;&nbsp; <input style="width: 126px;" class="" formControlName="" placeholder=""> <input style="width: 183px;" class="" formControlName="" placeholder="">
+                                <br>
+                                <label>Vat</label> &nbsp;&nbsp; <input style="width: 126px;" class="" formControlName="" placeholder=""> <input style="width: 183px;" class="" formControlName="" placeholder="">
+                                <br>
+                                <label>Final Total</label> &nbsp;&nbsp; <input style="width: 183px;" class="" formControlName="" placeholder="">
+                            </div>
+                        </div>               
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    
+    
+    
+       
+    </div>
+    
+    
+    
