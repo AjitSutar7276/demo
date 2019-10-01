@@ -4,37 +4,39 @@
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> <strong>Party Master </strong> 
             </div>
+            <!-- <form [formGroup]="partyForm"> -->
+            <form [formGroup]="partyForm">
             <div class="card-body">
-                <form>
+               
                         <div class="row">
                             <div class="col-md-3"> 
                                 <div class="form-group">
                                     <label>Party Type</label>
                                     <br>
-                                    <input type="radio" name="" style="margin-top: 8px;"> Supplier
+                                    <input type="radio" formControlName="Customer" name="customer" value="1"  style="margin-top: 8px;" checked> Supplier
                                     &nbsp;&nbsp;
-                                    <input type="radio" name="" style="margin-top: 8px;"> Customer
+                                    <input type="radio" formControlName="Customer" name="customer" value="2" style="margin-top: 8px;"> Customer
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Party Name</label>
-                                    <input class="form-control" formControlName="ptName"  placeholder="Party Name..">
+                                    <input class="form-control" formControlName="ptName"  placeholder="Party Name.." required>
                                 </div>
                             </div>
         
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <textarea class="form-control" formControlName="address" placeholder="Address.." rows="1"></textarea>
+                                    <textarea class="form-control" formControlName="address" placeholder="Address.." rows="1" required></textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input class="form-control" formControlName="phone"  placeholder="Phone No..">
+                                    <input class="form-control" formControlName="phone"  placeholder="Phone No.." required>
                                 </div>
                             </div>
 
@@ -45,7 +47,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Mobile No 1</label>
-                                    <input class="form-control" formControlName="mob1"  placeholder="Mobile No 1..">
+                                    <input class="form-control" formControlName="mob1"  placeholder="Mobile No 1.." required>
                                 </div>
                             </div>
 
@@ -66,18 +68,21 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>GST No</label>
-                                    <input class="form-control" formControlName="gst"  placeholder="GST No..">
+                                    <input class="form-control" formControlName="gst"  placeholder="GST No.." required>
                                 </div>
                             </div>
                         </div>
 
-                </form>
+               
             </div>
 
             <div class="card-footer">
-                <button   class="btn btn-sm btn-primary"  type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
-                <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
+                <button class="btn btn-sm btn-primary" *ngIf="submitShow" type="submit" [disabled]="!partyForm.valid" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button class="btn btn-sm btn-primary" *ngIf="updateShow" type="submit" [disabled]="!partyForm.valid" (click)="updateData()"><i class="fa fa-dot-circle-o"></i>Update</button>
+
+                <button class="btn btn-sm btn-danger" type="reset" ><i class="fa fa-ban"></i> Cancel</button>
             </div>
+        </form>
         </div>
     </div>
 
@@ -99,18 +104,20 @@
                             <th>Phone</th>
                             <th>FAX</th>
                             <th>GST No</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><span ><button class="btn btn-success" >Edit</button></span> <span></span><button class="btn btn-danger" >Delete</button></td>
+                        <tr *ngFor="let data of partyData;let i = index">
+                            <td>{{data.party_type_name}}</td>
+                            <td>{{data.party_name}}</td>
+                            <td>{{data.address}}</td>
+                            <td>{{data.mobile_1}}</td>
+                            <td>{{data.mobile_2}}</td>
+                            <td>{{data.phone}}</td>
+                            <td>{{data.fax}}</td>
+                            <td>{{data.gst}}</td>
+                            <td><span ><button class="btn btn-success" (click)="editPartyData(data.party_id)" >Edit</button></span> <span></span><button class="btn btn-danger" (click)="deletePartyData(data.party_id)">Delete</button></td>
                         </tr>
                         
                     </tbody>

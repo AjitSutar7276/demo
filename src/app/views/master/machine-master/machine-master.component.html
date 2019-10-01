@@ -33,12 +33,14 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="col-sm-4">
                                     <label>Select Photo</label>
                                     <!-- <input class="form-control" id="file-input" type="file"> -->
                                     <input type="file" name="photo"  (change)="onSelectFile($event)" ng2FileSelect [uploader]="uploader" formControlName="image" />
                                     <br>
-                                    <img [src]="url" style="width:200px;margin-top: 5px; border-radius: 4px;">
+                                    <img [src]="url" style="width:200px;margin-top: 5px; border-radius: 4px;" formControlName="img">
+                                    <input type="hidden" formControlName="imagePath">
                             </div>
                             <div class="col-sm-2">
                                 <button class="btn btn-success" (click)="uploader.uploadAll()">Upload File</button>
@@ -90,7 +92,7 @@
             </div>
 
             <div class="card-footer">
-                <button *ngIf="submitShow"class="btn btn-sm btn-primary" type="submit" (click)="submitData();"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="submitShow"class="btn btn-sm btn-primary" type="submit" (click)="submitData();uploader.uploadAll();"><i class="fa fa-dot-circle-o"></i> Save</button>
                 <button *ngIf="updateShow"class="btn btn-sm btn-primary" type="submit" (click)="updateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
 
                 <button class="btn btn-sm btn-danger" type="submit" (click)="CancelData()"><i class="fa fa-ban" ></i> Cancel</button>

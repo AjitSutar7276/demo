@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ShadeMasterService} from './shade-master.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-shade-master',
   templateUrl: './shade-master.component.html',
@@ -19,7 +21,7 @@ export class ShadeMasterComponent implements OnInit {
     shade  : new FormControl(''),
     process : new FormControl('')
   });
-  constructor( private shadeservice : ShadeMasterService) 
+  constructor( private shadeservice : ShadeMasterService,private toastr: ToastrService) 
   {
     //auto increament id
     this.shadeservice.getShadeid().subscribe(data=>{
@@ -66,8 +68,10 @@ export class ShadeMasterComponent implements OnInit {
       this.shadeservice.deleteUnit(eles).subscribe(data=>{
           console.log(data);
           this.ngOnInit();
+          this.toastr.success('Shade Deleted Successfully', 'Shade Master');
       },err=>{
           console.log('Not Delete Record');
+          this.toastr.success('Shade Not Deleted. Something is Wrong.', 'Shade Master');
       })
   }
   //Insert Shade-Master Data
@@ -78,8 +82,10 @@ export class ShadeMasterComponent implements OnInit {
       console.log(data);
       this.shadeForm.reset();
       this.ngOnInit();
+      this.toastr.success('Shade Saved Successfully', 'Shade Master');
     },err=>{
       console.log('Data Not insert');
+      this.toastr.success('Shade Not Saved. Something is Wrong.', 'Shade Master');
     })
   }
 
@@ -93,8 +99,10 @@ export class ShadeMasterComponent implements OnInit {
         this.updateShow = false;
         this.submitShow = true;
         this.ngOnInit();
+        this.toastr.success('Shade Updated Successfully', 'Shade Master');
       },err=>{  
         console.log(err);
+        this.toastr.success('Shade Not Updated. Something is Wrong.', 'Shade Master');
       })
     }
 

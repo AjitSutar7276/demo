@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { JobMasterService} from './job-master.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-job-master',
   templateUrl: './job-master.component.html',
@@ -28,7 +30,7 @@ export class JobMasterComponent implements OnInit {
     igst        : new FormControl('')
 
   })
-  constructor(private jobservice : JobMasterService) 
+  constructor(private jobservice : JobMasterService,private toastr: ToastrService) 
   {
       //auto Increment id
       this.jobservice.getJobMasterData().subscribe(data=>{
@@ -72,8 +74,10 @@ export class JobMasterComponent implements OnInit {
         // console.log(data);
         this.jobForm.reset();
         this.ngOnInit();
+        this.toastr.success('Job Saved Successfully', 'Job Master');
     },err=>{
         console.log('Something is bad');
+        this.toastr.success('Job Not Saved. Something is Wrong.', 'Job Master');
     })
   }
 
@@ -86,6 +90,10 @@ export class JobMasterComponent implements OnInit {
       this.updateShow = false;
       this.jobForm.reset();
       this.ngOnInit();
+      this.toastr.success('Job Updated Successfully', 'Job Master');
+    },err=>{
+      console.log('Something is bad');
+      this.toastr.success('Job Not Updated. Something is Wrong.', 'Job Master');
     })
   }
    //Edit data
@@ -116,8 +124,10 @@ export class JobMasterComponent implements OnInit {
        this.jobservice.deleteJob(eles).subscribe(data=>{
            console.log(data);
            this.ngOnInit();
+           this.toastr.success('Job Deleted Successfully', 'Job Master');
        },err=>{
            console.log('Not Delete Record');
+           this.toastr.success('Job Not Deleted. Something is Wrong.', 'Job Master');
        })
    }
 }

@@ -11,6 +11,8 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RawMaterialMasterComponent } from './raw-material-master/raw-material-master.component';
 import { MachineMasterComponent } from './machine-master/machine-master.component';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
 
 @NgModule({
   declarations: [FileSelectDirective,UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
@@ -19,6 +21,7 @@ import { MachineMasterComponent } from './machine-master/machine-master.componen
     MasterRoutingModule,
     ReactiveFormsModule,
     HttpModule
+    
   ]
 })
 export class MasterModule { }

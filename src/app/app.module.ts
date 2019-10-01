@@ -41,6 +41,8 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { ToastrModule } from 'ngx-toastr';
+
 // import { MachineMasterComponent } from './machinemaster/machine-master.component';
 
 @NgModule({
@@ -57,7 +59,9 @@ import { ChartsModule } from 'ng2-charts';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+
+    ToastrModule.forRoot() 
   ],
   declarations: [
     AppComponent,

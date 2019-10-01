@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MachineMasterService } from './machine-master.service';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { ToastrService } from 'ngx-toastr';
 
 
 const URL = 'http://localhost:3000/api/upload';
@@ -30,9 +31,11 @@ export class MachineMasterComponent implements OnInit {
     process      : new FormControl(''),
     pur_date     : new FormControl(''),
     Warranty     : new FormControl(''),
-    image        : new FormControl('')
+    image        : new FormControl(''),
+    imagePath    : new FormControl(''),
+    img          : new FormControl('')
   })
-  constructor(private machineService : MachineMasterService) {
+  constructor(private machineService : MachineMasterService,private toastr: ToastrService) {
     this.machineService.getMachineData().subscribe(data=>{
       this.machineData = data;
       this.autoId = this.machineData.length;
@@ -46,15 +49,40 @@ export class MachineMasterComponent implements OnInit {
    //submit Data 
    submitData()
    {
+      if(this.url == '')
+      {
        let data = this.MachineForm.value;
        console.log(data);
        this.machineService.submitData(data).subscribe(data =>{
          console.log(data);
          this.MachineForm.reset();
          this.ngOnInit(); 
+         this.toastr.success('Machine Saved Successfully', 'Machine Master');
        },err=>{
           console.log('Something Bad');
+          this.toastr.success('Machine Not Saved. Something is Wrong.', 'Machine Master');
        })
+      }
+      else{
+        this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+            console.log('ImageUpload:uploaded:', item, status, response);
+            console.log(response);
+            this.MachineForm.controls.imagePath.setValue(response);
+            let data = this.MachineForm.value;
+            
+            // alert('File uploaded successfully');
+            this.machineService.submitData(data).subscribe(data =>{
+              console.log(data);
+              this.MachineForm.reset();
+              this.ngOnInit(); 
+              this.toastr.success('Machine Saved Successfully', 'Machine Master');
+            },err=>{
+               console.log('Something Bad');
+               this.toastr.success('Machine Not Saved. Something is Wrong.', 'Machine Master');
+            })
+        };
+        
+      }
    }
   ngOnInit() {
 
@@ -68,11 +96,11 @@ export class MachineMasterComponent implements OnInit {
     });
 
     this.uploader.onAfterAddingFile = (file) => { console.log(file);file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-         console.log('ImageUpload:uploaded:', item, status, response);
-         console.log(response);
-         alert('File uploaded successfully');
-     };
+    // this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+    //      console.log('ImageUpload:uploaded:', item, status, response);
+    //      console.log(response);
+    //      alert('File uploaded successfully');
+    //  };
 
   }
 
@@ -89,7 +117,7 @@ export class MachineMasterComponent implements OnInit {
         }
         else
         {
-             this.url = event.target.result;
+             this.url = reader.result;
         }
       }
     }
@@ -100,8 +128,10 @@ export class MachineMasterComponent implements OnInit {
      this.machineService.deleteMachine(ele).subscribe(data=>{
         console.log(data);
         this.ngOnInit();
+        this.toastr.success('Machine Deleted Successfully', 'Machine Master');
      },err=>{
        console.log(err);
+       this.toastr.success('Machine Not Deleted. Something is Wrong.', 'Machine Master');
      })
   }
 
@@ -143,8 +173,10 @@ export class MachineMasterComponent implements OnInit {
       this.submitShow = true;
       this.MachineForm.reset();
       this.ngOnInit();
+      this.toastr.success('Machine Updated Successfully', 'Machine Master');
     },err=>{
       console.log(err);
+      this.toastr.success('Machine Not Updated. Something is Wrong.', 'Machine Master');
     })
   }
 

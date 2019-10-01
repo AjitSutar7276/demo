@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UnitMasterService } from '../unit-master/unit-master.service';
 import { SurfaceTreMasterService } from './surface-tre-master.service';
+import { ToastrService } from 'ngx-toastr';
+
+
 @Component({
   selector: 'app-surface-tre-master',
   templateUrl: './surface-tre-master.component.html',
@@ -29,7 +32,7 @@ export class SurfaceTreMasterComponent implements OnInit {
   get sale_rate() { return this.surfaceForm.get('sale_rate');}
 
 
-  constructor(private unitservice : UnitMasterService,private surfaceService : SurfaceTreMasterService) {
+  constructor(private unitservice : UnitMasterService,private surfaceService : SurfaceTreMasterService,private toastr: ToastrService) {
     this.unitservice.getUnitid().subscribe(data=>{
         this.unitArray = data;
         console.log(this.unitArray);
@@ -68,8 +71,10 @@ export class SurfaceTreMasterComponent implements OnInit {
         console.log(data);
         this.surfaceForm.reset();
         this.ngOnInit();
+        this.toastr.success('Treatment Saved Successfully', 'Surface Treatment Master');
       },err=>{
         console.log('Something is bad');
+        this.toastr.success('Treatment Not Saved. Something is Wrong.', 'Surface Treatment Master');
       })
   }
 
@@ -77,8 +82,10 @@ export class SurfaceTreMasterComponent implements OnInit {
   {
     this.surfaceService.deleteSurface(ele).subscribe(data=>{
       this.ngOnInit()
+      this.toastr.success('Treatment Deleted Successfully', 'Surface Treatment Master');
     },err=>{
       console.log('Not Deleted');
+      this.toastr.success('Treatment Not Delted. Something is Wrong.', 'Surface Treatment Master');
     })
   }
 
@@ -92,8 +99,9 @@ export class SurfaceTreMasterComponent implements OnInit {
       this.surfaceForm.controls.sale_rate.setValue(data[0].sale_rate);
       this.updateShow = true;
       this.submitShow = false;
+      this.toastr.success('Treatment Edited Successfully', 'Surface Treatment Master');
     },err=>{
-
+      this.toastr.success('Treatment Not Edited. Something is Wrong.', 'Surface Treatment Master');
     })
   }
 

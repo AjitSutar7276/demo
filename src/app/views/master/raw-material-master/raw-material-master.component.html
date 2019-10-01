@@ -13,7 +13,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                         <label>Item Code</label>
-                                                        <input class="form-control"  formControlName="id"  placeholder="Item Code..">
+                                                        <input class="form-control"  formControlName="id"  placeholder="Item Code.." readonly>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -52,8 +52,7 @@
                                                 <label>Unit *</label>
                                                 <select class="form-control" formControlName="unit" required>
                                                         <option value="0" selected disabled>Select Unit</option>
-                                                        <option value="1">Val 1</option>
-                                                        <option value="2">Val 2</option>
+                                                        <option *ngFor="let data of unitData" value="{{data.id}}">{{data.unit}}</option>
                                                     </select>
                                             </div>
                                         </div>
@@ -176,7 +175,9 @@
                     </div>
         
                     <div class="card-footer">
-                        <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                        <button *ngIf="submitShow" class="btn btn-sm btn-primary" type="submit" [disabled] = "!rawMaterialForm.valid" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                        <button *ngIf="updateShow" class="btn btn-sm btn-primary" type="submit" [disabled] = "!rawMaterialForm.valid" (click)="updateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
+
                         <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
                     </div>
                 </form>
@@ -216,111 +217,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
+                            <tr *ngFor="let data of rawMaterialData;let i = index;">
+                                <td>{{data.i}}</td>
+                                <td>{{data.itme_name}}</td>
+                                <td>{{data.item_type}}</td>
+                                <td>{{data.unit}}</td>
+                                <td>{{data.hsn}}</td>
+                                <td>{{data.used_in}}</td>
+                                <td>{{data.category}}</td>
+                                <td>{{data.weight}}</td>
+                                <td>{{data.feet}}</td>
+                                <td>{{data.pur_rate}}</td>
+                                <td>{{data.sale_rate}}</td>
+                                <td>{{data.op_stock}}</td>
+                                <td>{{data.thinkness}}</td>
+                                <td>{{data.minLevel}}</td>
+                                <td>{{data.maxLevel}}</td>
+                                <td>{{data.cgst}}</td>
+                                <td>{{data.sgst}}</td>
+                                <td>{{data.igst}}</td>
                                 <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
                             </tr>
-                            <tr>
-                                <td>02</td>
-                                <td>Treatment 2</td>
-                                <td>MM</td>
-                                <td>Anodising</td>
-                                <td>Anodising</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>Treatment 3</td>
-                                <td>CM</td>
-                                <td>Paint</td>
-                                <td>Paint</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>04</td>
-                                <td>Treatment 4</td>
-                                <td>Meter</td>
-                                <td>Sorting</td>
-                                <td>Sorting</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
-                            <tr>
-                                <td>05</td>
-                                <td>Treatment 5</td>
-                                <td>Ltr</td>
-                                <td>Retranfer</td>
-                                <td>Retranfer</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>01</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Chemical</td>
-                                <td>Treatment 1</td>
-                                <td>KG</td>
-                                <td>Chemical</td>
-                                <td><span class="badge badge-success">EDIT</span> <span class="badge badge-danger">DELETE</span></td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                     

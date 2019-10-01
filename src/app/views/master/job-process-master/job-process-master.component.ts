@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { JobProcessMasterService} from './job-process-master.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-job-process-master',
   templateUrl: './job-process-master.component.html',
@@ -16,7 +18,7 @@ export class JobProcessMasterComponent implements OnInit {
     id           : new FormControl(''),
     process_place: new FormControl('')
   })
-  constructor(private jobService : JobProcessMasterService) {
+  constructor(private jobService : JobProcessMasterService,private toastr: ToastrService) {
     //auto Increment id
     this.jobService.getJobProccessMasterData().subscribe(data =>{
       this.jobArray = data;
@@ -45,8 +47,10 @@ export class JobProcessMasterComponent implements OnInit {
       console.log(data);
       this.jobProcess.reset();
       this.ngOnInit();
+      this.toastr.success('Job Process Saved Successfully', 'Job Process Master');
     },err=>{
       console.log('Something is Bad');
+      this.toastr.success('Job Process Not Saved. Something is Wrong.', 'Job Process Master');
     })
   }
   updateData()
@@ -57,8 +61,10 @@ export class JobProcessMasterComponent implements OnInit {
       this.ngOnInit();
       this.updateShow = false;
       this.submitShow = true;
+      this.toastr.success('Job Process Updated Successfully', 'Job Process Master');
     },err=>{
       console.log('Something is bad');
+      this.toastr.success('Job Process Not Updated. Something is Wrong.', 'Job Process Master');
     })
   }
   //Edit data
@@ -80,8 +86,10 @@ export class JobProcessMasterComponent implements OnInit {
       this.jobService.deleteJob(eles).subscribe(data=>{
           console.log(data);
           this.ngOnInit();
+          this.toastr.success('Job Process Deleted Successfully', 'Job Process Master');
       },err=>{
           console.log('Not Delete Record');
+          this.toastr.success('Job Process Not Saved. Something is Wrong.', 'Job Process Master');
       })
   }
 }

@@ -1,98 +1,108 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
+            <form [formGroup]="quotationForm">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i><strong>Quotation Master</strong> 
             </div>
-            <form>
-            <div class="card-body">
-                <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
-                    
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label>Bill No.</label>
-                                <input class="form-control" formControlName="billno" placeholder="Bill No..">
+            
+                <div class="card-body">
+                    <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
+                        
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Bill No.</label>
+                                    <input class="form-control" formControlName="billno" placeholder="Bill No.." readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input class="form-control" id="date-input" formControlName="quo_date" placeholder="Date.." type="date">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <!-- <select class="form-control" formControlName="name" required>
+                                        <option value="0" selected disabled>Select Name</option>
+                                        <option value="1">Name 1</option>
+                                        <option value="2">Name 2</option>
+                                    </select> -->
+                                    <ngx-select-dropdown formControlName="name" [multiple]="false" [config]="config" [options]="companyData" value="party_id"></ngx-select-dropdown>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 no-padding">
+                                <div class="form-group">
+                                    <br/>
+                                    <button class="btn btn-success circle-type" type="submit" style="margin-left: 15px;"><i class="fa fa-plus"></i></button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Date</label>
-                                <input class="form-control" id="date-input" formControlName="pur_date" placeholder="Date.." type="date">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Material Code</label>
+                                    <!-- <input class="form-control" formControlName="materialcode" placeholder="Material Code.."> -->
+                                    <ngx-select-dropdown formControlName="materialcode" [multiple]="false" [config]="config1" [options]="MaterailDataList" value="material_id"></ngx-select-dropdown>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Perticulars</label>
+                                    <input class="form-control" formControlName="perticulars" placeholder="Perticulars..">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-5">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <select class="form-control" formControlName="name" required>
-                                    <option value="0" selected disabled>Select Name</option>
-                                    <option value="1">Name 1</option>
-                                    <option value="2">Name 2</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input class="form-control" formControlName="quantity" placeholder="Quantity..">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Unit</label>
+                                    <!-- <input class="form-control" formControlName="unit" placeholder="Unit.."> -->
+                                    <!-- <select class="form-control" formControlName="unit">
+                                        <option selected disabled>Select Unit</option>
+                                        <option *ngFor="let data of unitData" value="{{data.id}}">
+                                            {{data.unit}}
+                                        </option>
+                                    </select> -->
+                                    <ngx-select-dropdown formControlName="unit" [multiple]="false" [config]="config2" [options]="unitData" value="id"></ngx-select-dropdown>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label>Rate</label>
+                                    <input class="form-control" formControlName="rate" placeholder="Rate..">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 no-padding">
+                                <div class="form-group">
+                                    <br/>
+                                    <button class="btn btn-sm btn-primary" type="submit" (click)="addIntoRow()"><i class="fa fa-dot-circle-o"></i> Add</button>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="col-md-1 no-padding">
-                            <div class="form-group">
-                                <br/>
-                                <button class="btn btn-success circle-type" type="submit" style="margin-left: 15px;"><i class="fa fa-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Material Code</label>
-                                <input class="form-control" formControlName="materialcode" placeholder="Material Code..">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Perticulars</label>
-                                <input class="form-control" formControlName="perticulars" placeholder="Perticulars..">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label>Quantity</label>
-                                <input class="form-control" formControlName="quantity" placeholder="Quantity..">
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Unit</label>
-                                <input class="form-control" formControlName="unit" placeholder="Unit..">
-                            </div>
-                        </div>
-
-                        <div class="col-sm-5">
-                            <div class="form-group">
-                                <label>Rate</label>
-                                <input class="form-control" formControlName="rate" placeholder="Rate..">
-                            </div>
-                        </div>
-
-                        <div class="col-md-1 no-padding">
-                            <div class="form-group">
-                                <br/>
-                                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
-                            </div>
-                        </div>
-                    </div>
-        
-                <!-- </form> -->
-            </div>
-
+            
+                    <!-- </form> -->
+                </div>
             </form> 
         </div>
+    
     </div>
 
 
@@ -113,59 +123,60 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr *ngFor="let data of quoDetails">
+                            <td>{{data.perticulars}}</td>
+                            <td>{{data.quantity}}</td>
+                            <td>{{data.unit.unit}}</td>
+                            <td>{{data.rate}}</td>
+                            <td>{{data.rate * data.quantity}}</td>
                         </tr>
                     </tbody>
                 </table>
-
+                <!-- <form [formGroup]="quotationDetails"> -->
                 <div class="row">
+                    
                     <div class="col-sm-8">
                         <div class="form-group">
                             <label style="font-weight: 700;">Terms & Conditions</label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" id="checkbox1" type="checkbox" value="option1"><label class="form-check-label" for="checkbox1"> Payment 50% Advance. </label>
+                            <input class="form-check-input" id="checkbox1" type="checkbox" value="option1"  (change)="servicess[$event.target.getAttribute('value')]=$event.target.checked"><label class="form-check-label" for="checkbox1"> Payment 50% Advance. </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" id="checkbox1" type="checkbox" value="option1"><label class="form-check-label" for="checkbox1"> Valid For 15 Days. </label>
+                            <input class="form-check-input" id="checkbox1" type="checkbox" value="option2" (change)="servicess[$event.target.getAttribute('value')]=$event.target.checked"><label class="form-check-label" for="checkbox1"> Valid For 15 Days. </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" id="checkbox1" type="checkbox" value="option1"><label class="form-check-label" for="checkbox1"> Payment Against Proforma. </label>
+                            <input class="form-check-input" id="checkbox1" type="checkbox" value="option3"  (change)="servicess[$event.target.getAttribute('value')]=$event.target.checked"><label class="form-check-label" for="checkbox1"> Payment Against Proforma. </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" id="checkbox1" type="checkbox" value="option1"><label class="form-check-label" for="checkbox1"> Payment 30% Advance. </label>
+                            <input class="form-check-input" id="checkbox1" type="checkbox" value="option4" (change)="servicess[$event.target.getAttribute('value')]=$event.target.checked"><label class="form-check-label" for="checkbox1"> Payment 30% Advance. </label>
                         </div>
                     </div>
-
+ 
                     <div class="col-md-4">
                         <div class="form-group" style="text-align: right;">
-                            <label>Total</label> &nbsp;&nbsp; <input style="width: 205px;" class="" formControlName="" placeholder="">
+                            <label>Total</label> &nbsp;&nbsp; <input style="width: 205px;" class=""  placeholder="" [(ngModel)]="total1" name="total1">
                             <br>
-                            <label>Pack. Charge</label> &nbsp;&nbsp; <input style="width: 205px;" class="" formControlName="" placeholder="">
+                            <label>Pack. Charge</label> &nbsp;&nbsp; <input style="width: 205px;" class=""  placeholder="" [(ngModel)]="packAmt" (keyup)="packValue()" name="packAmt">
                             <br>
-                            <label>Tran. Charge</label> &nbsp;&nbsp; <input style="width: 205px;" class="" formControlName="" placeholder="">
+                            <label>Tran. Charge</label> &nbsp;&nbsp; <input style="width: 205px;" class=""  placeholder="" [(ngModel)]="trafAmt" name="trafAmt" (keyup)="trafValue()">
                             <br>
-                            <label>Total Amt.</label> &nbsp;&nbsp; <input style="width: 205px;" class="" formControlName="" placeholder="">
+                            <label>Total Amt.</label> &nbsp;&nbsp; <input style="width: 205px;" class=""  placeholder=""  [(ngModel)]="finalAmt" name="finalAmt">
                         </div>
-                    </div>               
+                    </div>   
+                    <!-- </form>             -->
                 </div>
-
+            <!-- </form> -->
+                <div class="row">
+                    <div class="col-md-12" style="text-align:center">
+                        <button (click)="submitData()" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>

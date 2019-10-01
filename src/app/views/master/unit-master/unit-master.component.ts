@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UnitMasterService} from './unit-master.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+
+
 @Component({
   selector: 'app-unit-master',
   templateUrl: './unit-master.component.html',
@@ -17,7 +20,7 @@ export class UnitMasterComponent implements OnInit {
     unit: new FormControl(''),
     ID  : new FormControl('')
   });
-  constructor(private unitservice : UnitMasterService) { 
+  constructor(private unitservice : UnitMasterService,private toastr: ToastrService) { 
       //this function is used to auto increment unit id
       this.unitservice.getUnitid().subscribe(data=>{
         this.unitarray = data;
@@ -60,8 +63,10 @@ export class UnitMasterComponent implements OnInit {
       this.unitservice.deleteUnit(eles).subscribe(data=>{
           console.log(data);
           this.ngOnInit();
+          this.toastr.success('Unit Deleted Successfully', 'Unit Master');
       },err=>{
           console.log('Not Delete Record');
+          this.toastr.success('Unit Not Deleted. Something is Wrong.', 'Unit Master');
       })
   }
   //save data
@@ -72,8 +77,10 @@ export class UnitMasterComponent implements OnInit {
         console.log(data);
         this.unitForm.reset();
         this.ngOnInit();
+        this.toastr.success('Unit Saved Successfully', 'Unit Master');
       },err=>{
         console.log(err);
+        this.toastr.success('Unit Not Saved. Something is Wrong.', 'Unit Master');
       })
   }
 
@@ -87,8 +94,10 @@ export class UnitMasterComponent implements OnInit {
       this.updateShow = false;
       this.submitShow = true;
       this.ngOnInit();
+      this.toastr.success('Unit Updated Successfully', 'Unit Master');
     },err=>{  
       console.log(err);
+      this.toastr.success('Unit Not Updated. Something is Wrong.', 'Unit Master');
     })
   }
 }

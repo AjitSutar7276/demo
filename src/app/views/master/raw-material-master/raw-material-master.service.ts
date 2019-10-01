@@ -20,4 +20,19 @@ export class RawMaterialMasterService {
     let rawmaterData = this.httpClient.get(this.url+'getRawMaterialData',{headers : httpHeader});
     return rawmaterData;
   }
+  submitData(data):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let submitData = this.httpClient.post(this.url+'submitRawData',data,{headers : httpHeader});
+    return submitData;
+  }
+
+  unitData():Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let unitData = this.httpClient.get(this.url+'getunit',{headers : httpHeader});
+    return unitData;
+  }
 }
