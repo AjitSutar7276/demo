@@ -42,7 +42,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { ToastrModule } from 'ngx-toastr';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // import { MachineMasterComponent } from './machinemaster/machine-master.component';
 
 @NgModule({
@@ -57,6 +57,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppSidebarModule,
     HttpClientModule,
     PerfectScrollbarModule,
+    NgxDatatableModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,

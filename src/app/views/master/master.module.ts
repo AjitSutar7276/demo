@@ -11,8 +11,9 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RawMaterialMasterComponent } from './raw-material-master/raw-material-master.component';
 import { MachineMasterComponent } from './machine-master/machine-master.component';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [FileSelectDirective,UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
@@ -20,7 +21,9 @@ import { MachineMasterComponent } from './machine-master/machine-master.componen
     CommonModule,
     MasterRoutingModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    SelectDropDownModule,
+    NgxDatatableModule
     
   ]
 })

@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label>Material Code</label>
                                     <!-- <input class="form-control" formControlName="materialcode" placeholder="Material Code.."> -->
-                                    <ngx-select-dropdown formControlName="materialcode" [multiple]="false" [config]="config1" [options]="MaterailDataList" value="material_id"></ngx-select-dropdown>
+                                    <ngx-select-dropdown formControlName="materialcode" [multiple]="false" [config]="config1" [options]="MaterailDataList" value="id"></ngx-select-dropdown>
                                 </div>
                             </div>
 
@@ -123,6 +123,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>Action</th>
                             <th>Perticulars</th>
                             <th>Quantity</th>
                             <th>Unit Name</th>
@@ -131,7 +132,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let data of quoDetails">
+                        <tr *ngFor="let data of quoDetails;let i=index">
+                            <td><i class="fa fa-trash" aria-hidden="true" (click)="removerow(i)"></i></td>
                             <td>{{data.perticulars}}</td>
                             <td>{{data.quantity}}</td>
                             <td>{{data.unit.unit}}</td>

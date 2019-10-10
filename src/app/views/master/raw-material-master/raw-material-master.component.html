@@ -39,11 +39,13 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label>Item Type * </label>
-                                                <select class="form-control" formControlName="itmeType" required>
+                                                <!-- <select class="form-control" formControlName="itmeType" required>
                                                     <option value="0" selected disabled>Select Type</option>
                                                     <option value="1">Val 1</option>
                                                     <option value="2">Val 2</option>
-                                                </select>
+                                                </select> -->
+
+                                                <ngx-select-dropdown formControlName="itmeType" [multiple]="false" [config]="config1" [options]="categoryData" value="id"></ngx-select-dropdown>
                                             </div>
                                         </div>
 
@@ -80,11 +82,12 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Category *</label>
-                                                <select class="form-control" formControlName="category" required>
+                                                <!-- <select class="form-control" formControlName="category" required>
                                                     <option value="0" selected disabled>Select Type</option>
                                                     <option value="1">Val 1</option>
                                                     <option value="2">Val 2</option>
-                                                </select>
+                                                </select> -->
+                                                <ngx-select-dropdown formControlName="category" [multiple]="false" [config]="config" [options]="categoryData" value="id"></ngx-select-dropdown>
                                             </div>
                                         </div>
 
@@ -218,7 +221,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let data of rawMaterialData;let i = index;">
-                                <td>{{data.i}}</td>
+                                <td>{{i+1}}</td>
                                 <td>{{data.itme_name}}</td>
                                 <td>{{data.item_type}}</td>
                                 <td>{{data.unit}}</td>

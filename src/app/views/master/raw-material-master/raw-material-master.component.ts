@@ -5,6 +5,7 @@ import { ServicesService } from '../../services/services.service';
 import { from } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-raw-material-master',
   templateUrl: './raw-material-master.component.html',
@@ -18,6 +19,30 @@ export class RawMaterialMasterComponent implements OnInit {
   updateShow : boolean = false;
   unitData   = [];
   mateialData = [];
+  categoryData : any;
+
+  config = {
+    displayKey:"category_name", 
+    search: true,
+    height: 'auto', 
+    placeholder:'Select Category Name',  
+    moreText: 'more',
+    noResultsFound: 'No results found!',
+    searchPlaceholder:'Search' 
+    //searchOnKey: 'name' 
+  }
+  config1 = {
+    displayKey:"category_name", 
+    search: true,
+    height: 'auto', 
+    placeholder:'Select Item Type',  
+    moreText: 'more',
+    noResultsFound: 'No results found!',
+    searchPlaceholder:'Search' 
+    //searchOnKey: 'name' 
+  }
+
+
   rawMaterialForm = new FormGroup({
       id       : new FormControl(''),
       itemName : new FormControl(''),
@@ -57,6 +82,13 @@ export class RawMaterialMasterComponent implements OnInit {
       },err=>{
         console.log(err);
       });
+
+      //Get Category Master
+      this.rawService.cotegoryData().subscribe(data=>{
+        this.categoryData = data;
+      },err=>{
+        console.log(err);
+      })
   }
 
   ngOnInit() 

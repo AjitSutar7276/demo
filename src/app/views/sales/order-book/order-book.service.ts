@@ -20,4 +20,36 @@ export class OrderBookService {
     let result = this.httpClient.get(this.url+'getPOdetails',{headers:httpHeader});
     return result;
   }
+
+  getQuotationDataForPo(id):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.get(this.url + 'getQuoDataForPO/'+id,{headers : httpHeader});
+    return result;
+  }
+
+  getQuotationDataForPoData(id):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.get(this.url + 'getPOQuoData/'+id,{headers : httpHeader});
+    return result;
+  }
+
+  getJobDataForPoData(id):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.get(this.url+'getJobDataForPoData/'+id,{headers : httpHeader});
+    return result;
+  }
+
+  submitData(data):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.post(this.url+'submitDataOrder',data,{headers : httpHeader});
+    return result;
+  }
 }

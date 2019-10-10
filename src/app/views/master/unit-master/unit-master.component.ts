@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UnitMasterService} from './unit-master.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
-
+import { ColumnMode } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-unit-master',
   templateUrl: './unit-master.component.html',
@@ -13,6 +12,13 @@ export class UnitMasterComponent implements OnInit {
 
   unitarray =[];
   id : any;
+  rows = [];
+  loadingIndicator = true;
+  reorderable = true;
+
+  columns = [{ prop: 'id' }, { name: 'unit' }];
+
+  ColumnMode = ColumnMode;
   updateShow : boolean = false;
   submitShow : boolean = true;
   //FormGroup object
@@ -21,11 +27,16 @@ export class UnitMasterComponent implements OnInit {
     ID  : new FormControl('')
   });
   constructor(private unitservice : UnitMasterService,private toastr: ToastrService) { 
+
+
+
       //this function is used to auto increment unit id
       this.unitservice.getUnitid().subscribe(data=>{
         this.unitarray = data;
+        this.rows = data;
         this.id = this.unitarray.length;
         this.id = this.id + 1;
+        console.log(data);
         this.unitForm.controls.ID.setValue(this.id);
       },err=>{
         console.log('Something is wrong');
@@ -36,6 +47,7 @@ export class UnitMasterComponent implements OnInit {
   ngOnInit() {
     this.unitservice.getUnitid().subscribe(data=>{
       this.unitarray = data;
+      this.rows = data;
       this.id = this.unitarray.length;
       this.id = this.id + 1;
       this.unitForm.controls.ID.setValue(this.id);

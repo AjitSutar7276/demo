@@ -4,7 +4,7 @@
                 <div class="card-header">
                     <i class="fa fa-align-justify"></i><strong>Order Book</strong> 
                 </div>
-                <form>
+                <form [formGroup]="orderForm">
                 <div class="card-body">
                     <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
                         
@@ -24,32 +24,35 @@
                                     <input class="form-control" formControlName="pono" placeholder="PO No..">
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Customer Name</label>
+                                    <!-- <select class="form-control" formControlName="name" required>
+                                        <option value="0" selected disabled>Select Name</option>
+                                        <option value="1">Name 1</option>
+                                        <option value="2">Name 2</option>
+                                    </select> -->
+                                    <ngx-select-dropdown formControlName="name" (change)="CheckQuotation($event)"[multiple]="false" [config]="config" [options]="companyData" value="party_id"></ngx-select-dropdown>
+                                </div>
+                            </div>
     
+                        </div>
+
+
+                        <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label>Date</label>
+                                    <label>PO Date</label>
                                     <input class="form-control" id="date-input" formControlName="date" placeholder="Date.." type="date">
                                 </div>
                             </div>
 
                             <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <label>Quotation No.</label>
-                                        <input class="form-control" formControlName="code" placeholder="Code..">
-                                    </div>
-                                </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Customer Name</label>
-                                    <select class="form-control" formControlName="name" required>
-                                        <option value="0" selected disabled>Select Name</option>
-                                        <option value="1">Name 1</option>
-                                        <option value="2">Name 2</option>
-                                    </select>
+                                    <label>Quotation No.</label>
+                                    <!-- <input class="form-control" formControlName="quotationNo" placeholder="Code.."> -->
+                                    <ngx-select-dropdown formControlName="quotationNo" (change)="getQuotationDatas($event)"[multiple]="false" [config]="config1" [options]="quotationData" value="qutation_id"></ngx-select-dropdown>
                                 </div>
                             </div>
     
@@ -68,7 +71,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label>Delivery Date</label>
-                                    <input class="form-control" id="date-input" formControlName="date" placeholder="Date.." type="date">
+                                    <input class="form-control" id="date-input" formControlName="Deliverydate" placeholder="Date.." type="date">
                                 </div>
                             </div>
                         </div>
@@ -83,7 +86,8 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Job Name</label>
-                                    <input class="form-control" formControlName="jname" placeholder="Job Name..">
+                                    <!-- <input class="form-control" formControlName="jname" placeholder="Job Name.."> -->
+                                    <ngx-select-dropdown formControlName="jname" (change)="getJobDataForOrder($event)"[multiple]="false" [config]="config2" [options]="JobMasterData" value="id"></ngx-select-dropdown>
                                 </div>
                             </div>
     
@@ -120,18 +124,19 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Surface Treatment</label>
-                                    <select class="form-control" formControlName="name" required>
+                                    <!-- <select class="form-control" formControlName="surfaceTreatment" required>
                                         <option value="0" selected disabled>Select Treatment</option>
                                         <option value="1">Treatment 1</option>
                                         <option value="2">Treatment 2</option>
-                                    </select>
+                                    </select> -->
+                                    <ngx-select-dropdown formControlName="surfaceTreatment" [multiple]="false" [config]="config3" [options]="sufaceTreatmentData" value="id"></ngx-select-dropdown>
                                 </div>
                             </div>
     
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <br/>
-                                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                                    <button class="btn btn-sm btn-primary" type="submit" (click)="AddRow()"><i class="fa fa-dot-circle-o"></i> Add</button>
                                 </div>
                             </div>
                         </div>
@@ -155,6 +160,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Action</th>
                                 <th>Job ID</th>
                                 <th>Job Name</th>
                                 <th>Art No</th>
@@ -165,24 +171,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <tr *ngFor="let data of poDataList;let i=index">
+                                <td>
+                                    <span>
+                                        <i class="fa fa-trash" style="color:red;" aria-hidden="true"(click)="removerow(i)"></i>
+                                        <i class="fa fa-pencil" *ngIf="!data.editable" style="color:blue;margin-left:15px" aria-hidden="true"(click)="editDomain(data)"></i>
+                                        <i class="fa fa-floppy-o" *ngIf="data.editable" style="color:green;margin-left:5px" aria-hidden="true"(click)="editDomain(data)"></i>
+                                    </span>
+                                </td>
+                                <td>
+                                        <span *ngIf="!data.editable">{{data.jid}}</span>
+                                        <input type="text" class="form-control" [(ngModel)]="data.jid" *ngIf="data.editable"/>
+                                </td>
+                                <td>
+                                        <span *ngIf="!data.editable">{{data.jname}}</span>
+                                        <input type="text" class="form-control" [(ngModel)]="data.jname" *ngIf="data.editable"/>
+                                </td>
+                                <td>
+                                        <span *ngIf="!data.editable">{{data.artno}}</span>
+                                        <input type="text" class="form-control" [(ngModel)]="data.artno" *ngIf="data.editable"/>
+                                </td>
+                                <td>
+                                        <span *ngIf="!data.editable">{{data.size}}</span>
+                                        <input type="text" class="form-control" [(ngModel)]="data.size" *ngIf="data.editable"/>
+                                </td>
+                                <td>
+                                        <span *ngIf="!data.editable">{{data.qty}}</span>
+                                        <input type="text" class="form-control" [(ngModel)]="data.qty" *ngIf="data.editable"/>
+                                </td>
+                                <td>
+                                        <span *ngIf="!data.editable">{{data.rate}}</span>
+                                        <input type="text" class="form-control" [(ngModel)]="data.rate" *ngIf="data.editable"/>
+                                </td>
+                                <td>{{data.rate * data.qty}}</td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                           
                         </tbody>
                     </table>
     
@@ -193,17 +216,21 @@
     
                         <div class="col-md-8">
                             <div class="form-group" style="text-align: right;">
-                                <label>Total</label> &nbsp;&nbsp; <input style="width: 183px;" class="" formControlName="" placeholder="">
+                                <label>Total</label> &nbsp;&nbsp; <input style="width: 183px;" class=""  placeholder="" [(ngModel)]='total'>
                                 <br>
-                                <label>Excise Duty</label> &nbsp;&nbsp; <input style="width: 126px;" class="" formControlName="" placeholder=""> <input style="width: 183px;" class="" formControlName="" placeholder="">
+                                <label>Excise Duty (%)</label> &nbsp;&nbsp; <input style="width: 126px;" class=""  placeholder="" [(ngModel)]="exciseRate" (keyup)="checkExciseRate($event)"> <input style="width: 183px;" class=""  placeholder="" [(ngModel)]="exciseAmt" >
                                 <br>
-                                <label>Vat</label> &nbsp;&nbsp; <input style="width: 126px;" class="" formControlName="" placeholder=""> <input style="width: 183px;" class="" formControlName="" placeholder="">
+                                <label>Vat  (%)</label> &nbsp;&nbsp; <input style="width: 126px;" class=""  placeholder="" [(ngModel)]="vatRate" (keyup)="checkVatRate($event)"> <input style="width: 183px;" class=""  placeholder="" [(ngModel)]="varAmt" >
                                 <br>
-                                <label>Final Total</label> &nbsp;&nbsp; <input style="width: 183px;" class="" formControlName="" placeholder="">
+                                <label>Final Total</label> &nbsp;&nbsp; <input style="width: 183px;" class=""  placeholder="" [(ngModel)]="final_amt">
                             </div>
                         </div>               
                     </div>
-    
+                    <div class="row">
+                            <div class="col-md-12" style="text-align: center">
+                                <button class="btn btn-primary" (click)="submitData()">Submit</button>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

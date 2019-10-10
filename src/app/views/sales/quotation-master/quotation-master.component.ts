@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ServicesService } from '../../services/services.service';
 import { QuotationMasterService } from './quotation-master.service';
 import { ToastrService } from 'ngx-toastr';
-
+import {ChangeDetectorRef} from '@angular/core';
 @Component({
   selector: 'app-quotation-master',
   templateUrl: './quotation-master.component.html',
@@ -25,35 +25,35 @@ export class QuotationMasterComponent implements OnInit {
 
   config = {
     displayKey:"party_name", 
-    search:true ,
+    search: true,
     height: 'auto', 
     placeholder:'Select Company Name',  
     moreText: 'more',
     noResultsFound: 'No results found!',
-    searchPlaceholder:'Search' ,
-    searchOnKey: 'name' 
+    searchPlaceholder:'Search' 
+    //searchOnKey: 'name' 
   }
 
   config1 = {
-    displayKey:"material_name", 
-    search:true ,
+    displayKey:"job_name", 
+    search: true,
     height: 'auto', 
     placeholder:'Select Material Code',  
     moreText: 'more',
     noResultsFound: 'No results found!',
-    searchPlaceholder:'Search' ,
-    searchOnKey: 'name' 
+    searchPlaceholder:'Search' 
+   // searchOnKey: 'name' 
   }
 
   config2 = {
     displayKey:"unit", 
-    search:true ,
+    search: true,
     height: 'auto', 
     placeholder:'Select Unit',  
     moreText: 'more',
     noResultsFound: 'No results found!',
-    searchPlaceholder:'Search' ,
-    searchOnKey: 'name' 
+    searchPlaceholder:'Search' 
+    //searchOnKey: 'name' 
   }
     public quotationForm = new FormGroup({
     billno        : new FormControl(''),
@@ -69,7 +69,7 @@ export class QuotationMasterComponent implements OnInit {
         rule : new FormControl([]),
 
     })
-  constructor(private services : ServicesService,private quoSerive : QuotationMasterService,private toastr: ToastrService) {
+  constructor(private services : ServicesService,private changeDetectorRef: ChangeDetectorRef,private quoSerive : QuotationMasterService,private toastr: ToastrService) {
     //Unit Data
     this.services.unitData().subscribe(data=>{
       this.unitData = data;
@@ -97,6 +97,13 @@ export class QuotationMasterComponent implements OnInit {
 
     //Get materail Data
     this.services.getMaterailData().subscribe(data=>{
+      // this.MaterailDataList = data;
+    },err=>{
+      console.log(err);
+    });
+
+    //Get Job Master Data
+    this.services.getJobName().subscribe(data=>{
       this.MaterailDataList = data;
     },err=>{
       console.log(err);
@@ -104,11 +111,11 @@ export class QuotationMasterComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.services.getMaterailData().subscribe(data=>{
-      this.MaterailDataList = data;
-    },err=>{
-      console.log(err);
-    });
+    // this.services.getMaterailData().subscribe(data=>{
+    //   this.MaterailDataList = data;
+    // },err=>{
+    //   console.log(err);
+    // });
 
     this.services.unitData().subscribe(data=>{
       this.unitData = data;
@@ -186,5 +193,19 @@ export class QuotationMasterComponent implements OnInit {
         this.toastr.success('Quotation Not Saved. Something is Wrong.', 'Quotation Master');
       })
       console.log(data);
+  }
+
+  removerow(i)
+  {
+    let total = 0;
+    this.quoDetails.splice(i, 1);
+    this.changeDetectorRef.detectChanges();
+    this.quoDetails.forEach(element => {
+      let total2 = element.rate * element.quantity;
+      total = total + total2;
+    });
+    this.total1 = total;
+    this.finalAmt = Number(this.packAmt) + Number(this.trafAmt) + Number(this.total1);
+    console.log(this.quoDetails);
   }
 }
