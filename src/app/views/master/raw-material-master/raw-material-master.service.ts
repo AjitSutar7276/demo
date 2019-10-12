@@ -43,4 +43,13 @@ export class RawMaterialMasterService {
     let cotegoryData = this.httpClient.get(this.url + 'getCotegoryData',{headers : httpHeader});
     return cotegoryData;
   }
+
+  deleteRaw(id):Observable<any>
+  {
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let deleteRaw = this.httpClient.get(this.url+'deleteRaw/'+id,{headers : httpHeader});
+    return deleteRaw;
+  }
 }
