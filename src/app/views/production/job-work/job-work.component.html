@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i><strong>Job Work</strong> 
+            </div>
+            <div class="card-body">
+                <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
+                    
+                <div class="border-group">  
+                    <div class="row">
+                        <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <input class="form-control" placeholder="Code.."value="Single">
+                                </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Select Company</label>
+                                <ngx-select-dropdown formControlName="name" (change)="CheckPODetials($event)"[multiple]="false" [config]="config" [options]="companyData" value="party_id"></ngx-select-dropdown>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Select Company</label>
+                                <ngx-select-dropdown formControlName="name" (change)="CheckJobWorkDetails($event)"[multiple]="false" [config]="config1" [options]="PoData" value="po_id"></ngx-select-dropdown>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Code</label>
+                                    <input class="form-control" placeholder="Code.."value="New">
+                                </div>
+                        </div>
+                    </div> 
+                </div>
+
+                <br>
+
+                <div class="border-group"> 
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>Job Name</th>
+                                    <th>Art No</th>
+                                    <th>Size</th>
+                                    <th>Qty</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of JobData">
+                                        <td (click)="getJodData(data.id)">{{data.job_name}}</td>
+                                        <td>{{data.art_no}}</td>
+                                        <td>{{data.sizeandDescription}}</td>
+                                        <td>{{data.qty}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+            <i class="fa fa-align-justify" (click)="toggle(collapseExample)"></i><strong>Required Raw Material</strong>
+            </div>
+            
+            <div class="card-block">
+                <div class="border-group"> 
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control">    
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

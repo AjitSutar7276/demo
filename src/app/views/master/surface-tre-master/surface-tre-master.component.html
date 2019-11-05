@@ -83,7 +83,7 @@
                 <i class="fa fa-align-justify"></i><strong>Records</strong> 
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <!-- <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Surface Treatment No</th>
@@ -105,8 +105,70 @@
                         </tr>
                         
                     </tbody>
-                </table>
+                </table> -->
                 
+
+                
+                <ngx-datatable
+                class="material striped"
+                [rows]="surfaceArray"
+                
+                [columnMode]="'force'"
+                [headerHeight]="40"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [externalSorting]="true"
+              >
+                
+                <ngx-datatable-column>
+                    <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>
+                        Surface Treatment No
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.id}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Surface Treatment
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.surface_treatment}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Unit In
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.unit_in}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Purchase Rate
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.purchase_rate}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Sale Rate
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.sale_rate}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        Action
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <span><i class="fa fa-trash" style="color:red"aria-hidden="true" (click)="deleteSurface(row.id)"></i><i class="fa fa-pencil" style="color:blue;margin-left:10px" (click)="editSurface(row.id)" aria-hidden="true"></i></span>
+                    </ng-template>
+                </ngx-datatable-column>
+                </ngx-datatable>
             </div>
         </div>
     </div>

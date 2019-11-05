@@ -1,0 +1,12 @@
+.ngx-datatable{
+    .sortable .sort-btn:before {
+        font-family: data-table;
+        content: "c";
+    }
+    .sortable .sort-btn.datatable-icon-down:before {
+        content: "f";
+    }
+    .sortable .sort-btn.datatable-icon-up:before {
+        content: "e";
+    }
+}

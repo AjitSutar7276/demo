@@ -55,7 +55,7 @@
                     <i class="fa fa-align-justify"></i><strong>Records</strong>  
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <!-- <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Shade No.</th>
@@ -73,7 +73,52 @@
                             </tr>
                             
                         </tbody>
-                    </table>
+                    </table> -->
+
+                    <ngx-datatable
+                    class="material striped"
+                    [rows]="shadeArray"
+                    
+                    [columnMode]="'force'"
+                    [headerHeight]="40"
+                    [footerHeight]="50"
+                    [rowHeight]="'auto'"
+                    [externalSorting]="true"
+                  >
+                    
+                    <ngx-datatable-column>
+                        <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>
+                            Shade No.
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.id}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Shade Name
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.shade_name}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Process For
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.process_for}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" ngx-datatable-header-template>
+                            Action
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span><i class="fa fa-trash" style="color:red"aria-hidden="true" (click)="deleteUnit(row.id)"></i><i class="fa fa-pencil" style="color:blue;margin-left:10px" (click)="editUnit(row.id)" aria-hidden="true"></i></span>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    </ngx-datatable>
                     <!-- <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>

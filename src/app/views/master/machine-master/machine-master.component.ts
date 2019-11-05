@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 const URL = 'http://localhost:3000/api/upload';
+// const URL = 'http://199.79.63.188:3000/api/upload';
 
 @Component({
   selector: 'app-machine-master',

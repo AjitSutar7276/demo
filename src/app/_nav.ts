@@ -89,7 +89,19 @@ export const navItems: NavData[] = [
         name: 'Order Book',
         url: '/Sales/order'
       }
-    ]}
+    ]},
+    {
+      name : 'Production',
+      url  : '/Production',
+      icon : 'icon-cursor',
+      children: [
+        {
+          name : 'Job Work',
+          url :'/Production/JobWork'
+        }
+
+      ]
+    }
   
   // {
   //   name: 'Colors',

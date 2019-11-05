@@ -71,19 +71,19 @@
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul> -->
                 <ngx-datatable
-                    class="material"
-                    [rows]="rows"
-                    [columns]="columns"
-                    [columnMode]="ColumnMode.force"
-                    headerHeight="50"
-                    footerHeight="50"
-                    [loadingIndicator]="loadingIndicator"
-                    [reorderable]="reorderable"
-                    [limit]="8"
-                >
+                class="material striped"
+                [rows]="rows"
+                [columns]="columns"
+                [columnMode]="'force'"
+                [headerHeight]="40"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [externalSorting]="true"
+                [loadingIndicator]="loading"
+                (sort)="onSort($event)">
                 
                 <ngx-datatable-column>
-                    <ng-template let-column="column" ngx-datatable-header-template>
+                    <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>
                         Id
                     </ng-template>
                     <ng-template let-row="row" ngx-datatable-cell-template>
@@ -91,7 +91,7 @@
                     </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column>
-                    <ng-template let-column="column" ngx-datatable-header-template>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
                         Unit
                     </ng-template>
                     <ng-template let-row="row" ngx-datatable-cell-template>

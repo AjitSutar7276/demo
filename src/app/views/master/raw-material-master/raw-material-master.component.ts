@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 const URL = 'http://localhost:3000/api/upload';
-
+// const URL = 'http://199.79.63.188:3000/api/upload';
 @Component({
   selector: 'app-raw-material-master',
   templateUrl: './raw-material-master.component.html',

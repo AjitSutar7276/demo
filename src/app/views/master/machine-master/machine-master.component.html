@@ -108,7 +108,7 @@
                 <i class="fa fa-align-justify"></i><strong> Records </strong>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <!-- <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Machine No</th>
@@ -134,9 +134,96 @@
                             <td>{{data.warranty}}</td>
                             <td><span><button class="btn btn-success" (click)="editMachine(data.machine_id)">Edit</button></span> <span><button class="btn btn-danger" (click)="deleteMachine(data.machine_id)">Delete</button></span></td>
                         </tr>
-                    </tbody>
-                </table>
+                    </tbody> -->
+                <!-- </table> -->
                 
+
+
+                
+                <ngx-datatable
+                class="material striped"
+                [rows]="machineData"
+                
+                [columnMode]="'force'"
+                [headerHeight]="40"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [externalSorting]="true"
+                >
+                
+                <ngx-datatable-column>
+                    <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>
+                        Machine No
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.machine_id}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Machine Name
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.machine_name}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Description
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.description}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Make
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.make}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Capacity
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.capacity}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Process
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.process}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Purchase Date
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.purchase_date}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Warranty
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.warranty}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        Action
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <span><i class="fa fa-trash" style="color:red"aria-hidden="true" (click)="deleteMachine(row.machine_id)"></i><i class="fa fa-pencil" style="color:blue;margin-left:10px" (click)="editMachine(row.machine_id)" aria-hidden="true"></i></span>
+                    </ng-template>
+                </ngx-datatable-column>
+                </ngx-datatable>
             </div>
         </div>
     </div>

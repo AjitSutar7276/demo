@@ -15,6 +15,7 @@ export class UnitMasterComponent implements OnInit {
   rows = [];
   loadingIndicator = true;
   reorderable = true;
+  loading: boolean = false;
 
   columns = [{ prop: 'id' }, { name: 'unit' }];
 
@@ -111,5 +112,25 @@ export class UnitMasterComponent implements OnInit {
       console.log(err);
       this.toastr.success('Unit Not Updated. Something is Wrong.', 'Unit Master');
     })
+  }
+
+  //table column sort function
+  onSort(event) {
+    // event was triggered, start sort sequence
+    this.loading = true;
+    setTimeout(() => {
+      const rows = [...this.rows];
+      console.log(rows);
+      // this is only for demo purposes, normally
+      // your server would return the result for
+      // you and you would just set the rows prop
+      const sort = event.sorts[0];
+      rows.sort((a, b) => {
+        return a[sort.prop].localeCompare(b[sort.prop]) * (sort.dir === 'desc' ? -1 : 1);
+      });
+
+      this.rows = rows;
+      this.loading = false;
+    }, 1000);
   }
 }

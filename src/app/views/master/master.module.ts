@@ -7,7 +7,10 @@ import { ShadeMasterComponent } from './shade-master/shade-master.component';
 import { JobMasterComponent } from './job-master/job-master.component';
 import { JobProcessMasterComponent } from './job-process-master/job-process-master.component';
 import { SurfaceTreMasterComponent } from './surface-tre-master/surface-tre-master.component';
-import { FileSelectDirective } from 'ng2-file-upload';
+// import { FileSelectDirective, FileDropDirective, FileUploader  } from 'ng2-file-upload';
+// import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { RawMaterialMasterComponent } from './raw-material-master/raw-material-master.component';
 import { MachineMasterComponent } from './machine-master/machine-master.component';
@@ -16,14 +19,15 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
-  declarations: [FileSelectDirective,UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
+  declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
   imports: [
     CommonModule,
     MasterRoutingModule,
     ReactiveFormsModule,
     HttpModule,
     SelectDropDownModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    FileUploadModule
     
   ]
 })

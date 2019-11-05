@@ -60,7 +60,7 @@
                 <i class="fa fa-align-justify"></i><strong>Records</strong>  
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <!-- <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Entry No.</th>
@@ -78,7 +78,53 @@
                         </tr>
                         
                     </tbody>
-                </table>
+                </table> -->
+
+                
+                <ngx-datatable
+                class="material striped"
+                [rows]="jobArray"
+                
+                [columnMode]="'force'"
+                [headerHeight]="40"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [externalSorting]="true"
+                >
+                
+                <ngx-datatable-column>
+                    <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>
+                        Entry No.
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.id}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Process Name
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.process_name}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Process Place
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.process_place}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                        Action
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <span><i class="fa fa-trash" style="color:red"aria-hidden="true" (click)="deleteUnit(row.id)"></i><i class="fa fa-pencil" style="color:blue;margin-left:10px" (click)="editUnit(row.id)" aria-hidden="true"></i></span>
+                    </ng-template>
+                </ngx-datatable-column>
+                </ngx-datatable>
                 
             </div>
         </div>
