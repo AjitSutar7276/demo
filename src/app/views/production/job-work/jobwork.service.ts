@@ -35,4 +35,12 @@ export class JobworkService {
     let result = this.httpClient.get(this.url+'getJobWorkDetails/'+id,{headers : httpHeader});
     return result;
   }
+
+  submitData(data):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.post(this.url+'SubmitJodWorddata',data,{headers:httpHeader});
+    return result;
+  }
 }

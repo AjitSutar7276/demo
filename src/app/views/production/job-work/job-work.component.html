@@ -1,103 +1,324 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <i class="fa fa-align-justify"></i><strong>Job Work</strong> 
-            </div>
-            <div class="card-body">
-                <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
-                    
-                <div class="border-group">  
-                    <div class="row">
-                        <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label>Type</label>
-                                    <input class="form-control" placeholder="Code.."value="Single">
-                                </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label>Select Company</label>
-                                <ngx-select-dropdown formControlName="name" (change)="CheckPODetials($event)"[multiple]="false" [config]="config" [options]="companyData" value="party_id"></ngx-select-dropdown>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label>Select Company</label>
-                                <ngx-select-dropdown formControlName="name" (change)="CheckJobWorkDetails($event)"[multiple]="false" [config]="config1" [options]="PoData" value="po_id"></ngx-select-dropdown>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label>Code</label>
-                                    <input class="form-control" placeholder="Code.."value="New">
-                                </div>
-                        </div>
-                    </div> 
+<form [formGroup]="JobWork">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i><strong>Job Work</strong> 
                 </div>
+                <div class="card-body">
+                    <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
+                        
+                    <div class="border-group">  
+                        <div class="row">
+                            <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Type</label>
+                                        <input class="form-control" placeholder="Code.."value="Single">
+                                    </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Select Company</label>
+                                    <ngx-select-dropdown formControlName="comName" (change)="CheckPODetials($event)"[multiple]="false" [config]="config" [options]="companyData" value="party_id"></ngx-select-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Select PO No</label>
+                                    <ngx-select-dropdown formControlName="PONo" (change)="CheckJobWorkDetails($event)"[multiple]="false" [config]="config1" [options]="PoData" value="po_id"></ngx-select-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Code</label>
+                                        <input class="form-control" formControlName="code" placeholder="Code.."value="New">
+                                    </div>
+                            </div>
+                        </div> 
+                    </div>
 
-                <br>
+                    <br>
 
-                <div class="border-group"> 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <th>Job Name</th>
-                                    <th>Art No</th>
-                                    <th>Size</th>
-                                    <th>Qty</th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let data of JobData">
-                                        <td (click)="getJodData(data.id)">{{data.job_name}}</td>
-                                        <td>{{data.art_no}}</td>
-                                        <td>{{data.sizeandDescription}}</td>
-                                        <td>{{data.qty}}</td>
-                                    </tr>
+                    <div class="border-group"> 
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>Job Name</th>
+                                        <th>Art No</th>
+                                        <th>Size</th>
+                                        <th>Qty</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let data of JobData">
+                                            <td (click)="getJodData(data.id)">{{data.job_name}}</td>
+                                            <td>{{data.art_no}}</td>
+                                            <td>{{data.sizeandDescription}}</td>
+                                            <td>{{data.qty}}</td>
+                                        </tr>
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
-        
-                <!-- </form> -->
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-            <i class="fa fa-align-justify" (click)="toggle(collapseExample)"></i><strong>Required Raw Material</strong>
-            </div>
             
-            <div class="card-block">
-                <div class="border-group"> 
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i><strong>Required Raw Material</strong> 
+                </div>
+                <div class="card-body">
+                        <div class="border-group">  
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" style="height: 95%;" formControlName="jobName">
+                                    <input type="hidden" formControlName="jobID">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" style="height: 95%;" formControlName="size">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" style="height: 95%;" formControlName="art_no">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" style="height: 95%;" formControlName="qty">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" style="height: 95%;" formControlName="amt">
+                                </div>
+                            </div>
+                            <!-- <hr> -->
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Item Type</label>
+                                        <ngx-select-dropdown formControlName="ItemType" (change)="GetMaterialData($event)"[multiple]="false" [config]="config2" [options]="materialData" value="material_id"></ngx-select-dropdown>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="form-group">
+                                        <label>Qty</label>
+                                        <input class="form-control" formControlName="qty1">
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="form-group">
+                                        <label>Length</label>
+                                        <input class="form-control" formControlName="Lenght" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="form-group">
+                                        <label>Width</label>
+                                        <input class="form-control" formControlName="Width" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="form-group">
+                                        <label>Height</label>
+                                        <input class="form-control" formControlName="height" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="form-group">
+                                        <label>Thickness</label>
+                                        <input class="form-control" formControlName="Thickness" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Surface Treatement</label>
+                                        <ngx-select-dropdown formControlName="surface" [multiple]="false" [config]="config3" [options]="surfaceData" value="id"></ngx-select-dropdown>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="form-group">
+                                        <label></label>
+                                        <button class="btn btn-info" style="margin-top:20px" (click)="AddRow()">Add</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>  
+                        <br>
+
+                        <div class="border-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <th>Action</th>
+                                            <th>Material Name</th>
+                                            <th>Qty</th>
+                                            <th>Lenght</th>
+                                            <th>Width</th>
+                                            <th>Height</th>
+                                            <th>Thickness</th>
+                                            <th>Surface Cost</th>
+                                            <th>Purchase Qty</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of JobWorkList;let i=index">
+                                                <td>
+                                                    <span>
+                                                        <i class="fa fa-trash" style="color:red;" aria-hidden="true"(click)="removerow(i)"></i>
+                                                        <i class="fa fa-pencil" *ngIf="!data.editable" style="color:blue;margin-left:15px" aria-hidden="true"(click)="editDomain(data)"></i>
+                                                        <i class="fa fa-floppy-o" *ngIf="data.editable" style="color:green;margin-left:5px" aria-hidden="true"(click)="editDomain(data)"></i>
+                                                    </span>
+                                                </td>
+                                                <td>{{data.jobWorkName}}</td>
+                                                <td>
+                                                        <span *ngIf="!data.editable">{{data.QTY}}</span>
+                                                        <input type="text" class="form-control" [(ngModel)]="data.QTY" [ngModelOptions]="{standalone: true}" *ngIf="data.editable"/>
+                                                </td>
+                                                <td>
+                                                        <span *ngIf="!data.editable">{{data.lenght}}</span>
+                                                        <input type="text" class="form-control" [(ngModel)]="data.lenght" [ngModelOptions]="{standalone: true}" *ngIf="data.editable"/>
+                                                </td>
+                                                <td>
+                                                        <span *ngIf="!data.editable">{{data.width}}</span>
+                                                        <input type="text" class="form-control" [(ngModel)]="data.width" [ngModelOptions]="{standalone: true}" *ngIf="data.editable"/>
+                                                </td>
+                                                <td>
+                                                        <span *ngIf="!data.editable">{{data.Height}}</span>
+                                                        <input type="text" class="form-control" [(ngModel)]="data.Height" [ngModelOptions]="{standalone: true}" *ngIf="data.editable"/>
+                                                </td>
+                                                <td>
+                                                        <span *ngIf="!data.editable">{{data.Thick}}</span>
+                                                        <input type="text" class="form-control" [(ngModel)]="data.Thick" [ngModelOptions]="{standalone: true}" *ngIf="data.editable"/>
+                                                </td>
+                                                <td>{{data.SurfaceName}}</td>
+                                                <td>{{data.purCost}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    <br>
+                    <!-- <div class="border-group" style="padding:5px">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="border-group">
+                                                
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="border-group">
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                        
+                    <!-- </div> -->
                     <div class="row">
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
+                        <div class="col-sm-8">
+                            <div class="border-group">
+                               <div class="row">
+                                   <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Process Name</label>
+                                            <ngx-select-dropdown formControlName="ProcessType" [multiple]="false" [config]="config4" [options]="processData" value="id"></ngx-select-dropdown>
+                                        </div>
+                                   </div>
+                                   <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Process Time</label>
+                                            <input type="text" class="form-control" formControlName="ProcessTime">
+                                        </div>
+                                   </div>
+                                   <div class="col-sm-3">
+                                       <button class="btn btn-info" style="margin: 20px;" (click)="GetProcessData()">Add</button>
+                                   </div>
+                               </div>
+                              
+                               <div class="row">
+                                   <div class="col-sm-12">
+                                       <table class="table table-bordered">
+                                           <thead>
+                                               <th>Process Name</th>
+                                               <th>Process Time</th>
+                                           </thead>
+                                           <tbody>
+                                               <tr *ngFor="let data of processDataList">
+                                                   <td>{{data.processName}}</td>
+                                                   <td>{{data.processTime}}</td>
+                                               </tr>
+                                           </tbody>
+                                       </table>
+                                   </div>
+                               </div>
+                            </div>
                         </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control">
+                        <div class="col-sm-4">
+                            <div class="border-group">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">Total raw material cost</div>
+                                            <div class="col-sm-6"><input type="text" [(ngModel)]="RawCost" [ngModelOptions]="{standalone: true}"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">Production Cost<span><input type="text" style="width:18%" (keyup)="GetProductionCost($event)">%</span></div>
+                                            <div class="col-sm-6"><input type="text" [(ngModel)]="productionCost" [ngModelOptions]="{standalone: true}" readonly></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                            <div class="row">
+                                                <div class="col-sm-6">Surface Treatement Cost</div>
+                                                <div class="col-sm-6"><input type="text" [(ngModel)]="surfaceCost" [ngModelOptions]="{standalone: true}" (keyup)="GetSurfaceCost($event.target.value)"></div>
+                                            </div>
+                                        
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">Fitting Charges</div>
+                                            <div class="col-sm-6"><input type="text" [(ngModel)]="fittingChrg" [ngModelOptions]="{standalone: true}" (keyup) ="fittingCost($event.target.value)"></div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">Packing Forwarding</div>
+                                            <div class="col-sm-6"><input type="text" [(ngModel)]="packingFord" [ngModelOptions]="{standalone: true}" (keyup)="packingCost($event.target.value)"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">Total Cost</div>
+                                            <div class="col-sm-6"><input type="text" [(ngModel)]="TotalCoast" [ngModelOptions]="{standalone: true}" readonly></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control">    
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12" style="text-align: center;">
+                            <button class="btn btn-info" (click)="SubmitData()">Submit</button>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-</div>
+    
+</form>
 
 

@@ -51,4 +51,21 @@ export class ServicesService {
     let result = this.httpClient.get(this.url+'getSurfaceData',{headers : httpHeader});
     return result;
   }
+
+  getRawMaterialData():Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.get(this.url+'getRawMaterialData',{headers : httpHeader});
+    return result;
+  }
+
+  getProcessData():Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.post(this.url+'getJobProcessMaster',{headers :httpHeader});
+    return result;
+  }
+
 }
