@@ -1,0 +1,133 @@
+<div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> <strong>Employee Master </strong> 
+                </div>
+
+                <form [formGroup]="partyForm">
+                <div class="card-body">
+                   
+                            <div class="row">
+                               
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Employee Name</label>
+                                        <input class="form-control" formControlName="eName"  placeholder="Employee Name.." required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Employee Code</label>
+                                        <input class="form-control" formControlName="eCode"  placeholder="Employee Code.." required>
+                                    </div>
+                                </div>
+            
+            
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Designation</label>
+                                        <input class="form-control" formControlName="desig"  placeholder="Designation.." required>
+                                    </div>
+                                </div>
+    
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Mobile No</label>
+                                        <input class="form-control" formControlName="mNo"  placeholder="Mobile No.." required>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <div class="row">
+                                
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <textarea class="form-control" formControlName="address" placeholder="Address.." rows="1" required></textarea>
+                                    </div>
+                                </div>
+    
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Joining Date</label>
+                                        <input type="date" class="form-control"  id="date-input" placeholder="Date.."  >
+                                    </div>
+                                </div>
+                     
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Monthly Salary</label>
+                                        <input class="form-control" formControlName="mSal"  placeholder="Monthly Salary.." required>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                   
+                </div>
+    
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+
+                    <button class="btn btn-sm btn-danger" type="reset" ><i class="fa fa-ban"></i> Cancel</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    
+    
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> <strong>Records</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Employee Name</th>
+                                <th>Employee Code</th>
+                                <th>Designation</th>
+                                <th>Mobile No</th>
+                                <th>Address</th>
+                                <th>Joining Date</th>
+                                <th>Monthly Salary</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of partyData;let i = index">
+                                <td>Ajit Pawar</td>
+                                <td>1234</td>
+                                <td>Head</td>
+                                <td>9876543210</td>
+                                <td>A/P Kolhapur</td>
+                                <td>01/01/2015</td>
+                                <td>50500</td>
+                                <td><span ><button class="btn btn-success" (click)="editPartyData(data.party_id)" >Edit</button></span> <span></span><button class="btn btn-danger" (click)="deletePartyData(data.party_id)">Delete</button></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+       
+    </div>
+    
+    
+    

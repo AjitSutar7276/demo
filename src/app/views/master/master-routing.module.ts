@@ -7,6 +7,8 @@ import {JobProcessMasterComponent} from './job-process-master/job-process-master
 import {JobMasterComponent} from './job-master/job-master.component';
 import {RawMaterialMasterComponent} from './raw-material-master/raw-material-master.component';
 import {MachineMasterComponent} from './machine-master/machine-master.component';
+import { EmployeeMasterComponent } from './employee-master/employee-master.component';
+import { ShiftMasterComponent } from './shift-master/shift-master.component';
 
 
 const routes: Routes = [{
@@ -71,6 +73,22 @@ const routes: Routes = [{
         component: MachineMasterComponent,
         data: {
           title: 'Machine Master'
+        }
+      },
+
+      {
+        path: 'employeeMaster',
+        component: EmployeeMasterComponent,
+        data: {
+          title: 'Employee Master'
+        }
+      },
+
+      {
+        path: 'shiftMaster',
+        component: ShiftMasterComponent,
+        data: {
+          title: 'Shift Master'
         }
       },
      

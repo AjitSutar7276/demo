@@ -68,6 +68,14 @@ export const navItems: NavData[] = [
         {
           name:'Machine Master',
           url :'/Master/machineMaster'
+        },
+        {
+          name:'Employee Master',
+          url :'/Master/employeeMaster'
+        },
+        {
+          name:'Shift Master',
+          url :'/Master/shiftMaster'
         }
         
       ]

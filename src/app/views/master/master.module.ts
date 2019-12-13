@@ -17,9 +17,15 @@ import { MachineMasterComponent } from './machine-master/machine-master.componen
 import { SelectDropDownModule } from 'ngx-select-dropdown'
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { EmployeeMasterComponent } from './employee-master/employee-master.component';
+import { ShiftMasterComponent } from './shift-master/shift-master.component';
 
 @NgModule({
+<<<<<<< Updated upstream
   declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
+=======
+  declarations: [FileSelectDirective,UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent, EmployeeMasterComponent, ShiftMasterComponent],
+>>>>>>> Stashed changes
   imports: [
     CommonModule,
     MasterRoutingModule,

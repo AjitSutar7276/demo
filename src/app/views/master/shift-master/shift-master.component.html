@@ -1,0 +1,134 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> <strong>Shift Master </strong> 
+            </div>
+
+            <form [formGroup]="shiftMaster">
+            <div class="card-body">
+               
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Shift Name</label>
+                                        <input class="form-control" formControlName="sftName"  placeholder="Shift Name.." required>
+                                    </div>
+                            </div>
+                
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Start Time</label>
+                                    <input class="form-control" formControlName="sTime"  placeholder="Start Time.." required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>End Time</label>
+                                    <input class="form-control" formControlName="eTime"  placeholder="End Time.." required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3"> 
+                                <div class="form-group">
+                                    <label>Night Shift?</label>
+                                    <br>
+                                    <input type="radio" formControlName="shift" name="shift" value="1"  style="margin-top: 8px;" checked> Yes
+                                    &nbsp;&nbsp;
+                                    <input type="radio" formControlName="shift" name="shift" value="2" style="margin-top: 8px;"> No
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Gross Time</label>
+                                    <input class="form-control" formControlName="gTime"  placeholder="Gross Time.." required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Total Time</label>
+                                    <input class="form-control" formControlName="tTime"  placeholder="Total Time..">
+                                </div>
+                            </div>
+                 
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Actual Work Time</label>
+                                    <input class="form-control" formControlName="awTime"  placeholder="Actual Work Time..">
+                                </div>
+                            </div>
+
+                        </div>
+
+               
+            </div>
+
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+               
+                <button class="btn btn-sm btn-danger" type="reset" ><i class="fa fa-ban"></i> Cancel</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> <strong>Records</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Shift Name</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Night Shift</th>
+                            <th>Gross Time</th>
+                            <th>Total Time</th>
+                            <th>Actual Work Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>9To5</td>
+                            <td>09:00</td>
+                            <td>05:00</td>
+                            <td>No</td>
+                            <td>08 HRS</td>
+                            <td>09 HRS</td>
+                            <td>07 HRS</td>
+                            <td><span ><button class="btn btn-success" (click)="editPartyData(data.party_id)" >Edit</button></span> <span></span><button class="btn btn-danger" (click)="deletePartyData(data.party_id)">Delete</button></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+   
+</div>
+
+
