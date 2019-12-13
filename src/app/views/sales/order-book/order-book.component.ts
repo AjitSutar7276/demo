@@ -293,7 +293,6 @@ export class OrderBookComponent implements OnInit {
         this.exciseAmt = 0;
         this.varAmt = 0;
         this.toastr.success('PO Order Saved Successfully');
-
      },err=>{
        console.log(err);
      })

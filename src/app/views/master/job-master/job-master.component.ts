@@ -14,7 +14,21 @@ export class JobMasterComponent implements OnInit {
   jobArray = [];
   updateShow : boolean = false;
   submitShow : boolean = true;
+  categoryData :any;
+  RawMaterial =[];
 
+  divShow : boolean = false;
+  unitData : any;
+  config1 = {
+    displayKey:"category_name", 
+    search: true,
+    height: 'auto', 
+    placeholder:'Select Item Type',  
+    moreText: 'more',
+    noResultsFound: 'No results found!',
+    searchPlaceholder:'Search' 
+    //searchOnKey: 'name' 
+  }
   jobForm = new FormGroup({
     id          : new FormControl(''),
     ArtNo       : new FormControl(''),
@@ -27,7 +41,16 @@ export class JobMasterComponent implements OnInit {
     Rate        : new FormControl(''),
     cgst        : new FormControl(''),
     sgst        : new FormControl(''),
-    igst        : new FormControl('')
+    igst        : new FormControl(''),
+    Thickness1  : new FormControl(''),
+    SalesRate1  : new FormControl(''),
+    PurRate1    : new FormControl(''),
+    sqFeet1     : new FormControl(''),
+    weight1     : new FormControl(''),
+    HSN1        : new FormControl(''),
+    unit1       : new FormControl(''),
+    itmeType1   : new FormControl(''),
+    itmeName1   : new FormControl('')
 
   })
   constructor(private jobservice : JobMasterService,private toastr: ToastrService) 
@@ -41,6 +64,20 @@ export class JobMasterComponent implements OnInit {
       },err=>{
           console.log('Something is bad');
       })
+
+      //Get Category Master
+      this.jobservice.cotegoryData().subscribe(data=>{
+        this.categoryData = data;
+      },err=>{
+        console.log(err);
+      })
+
+      this.jobservice.unitData().subscribe(data=>{
+        console.log(data);
+        this.unitData = data;
+      },err=>{
+        console.log(err);
+      });
   }
   get id(){return this.jobForm.get('id');}
   get ArtNo(){return this.jobForm.get('ArtNo');}
@@ -54,6 +91,15 @@ export class JobMasterComponent implements OnInit {
   get cgst(){return this.jobForm.get('cgst');}
   get sgst(){return this.jobForm.get('sgst');}
   get igst(){return this.jobForm.get('igst');}
+  get Thickness1(){return this.jobForm.get('Thickness1');}
+  get SalesRate1(){return this.jobForm.get('SalesRate1');}
+  get PurRate1(){return this.jobForm.get('PurRate1');}
+  get sqFeet1(){return this.jobForm.get('sqFeet1');}
+  get weight1(){return this.jobForm.get('weight1');}
+  get HSN1(){return this.jobForm.get('HSN1');}
+  get unit1(){return this.jobForm.get('unit1');}
+  get itmeType1(){return this.jobForm.get('itmeType1');}
+  get itmeName1(){return this.jobForm.get('itmeName1');}
   ngOnInit() {
     this.jobservice.getJobMasterData().subscribe(data=>{
           this.jobArray = data;
@@ -68,8 +114,11 @@ export class JobMasterComponent implements OnInit {
   //submit Data
   submitData()
   {
-    console.log(this.jobForm.value);
+    // console.log(this.jobForm.value);
     let data = this.jobForm.value;
+    data['RawDetails'] = this.RawMaterial;
+    data['Checked'] = this.divShow;
+    console.log(data);
     this.jobservice.submitData(data).subscribe(data=>{
         // console.log(data);
         this.jobForm.reset();
@@ -129,5 +178,37 @@ export class JobMasterComponent implements OnInit {
            console.log('Not Delete Record');
            this.toastr.success('Job Not Deleted. Something is Wrong.', 'Job Master');
        })
+   }
+
+   checkboxCheck(event)
+   {
+      if(event.target.checked == true)
+      {
+        this.divShow = true;
+      }
+      else
+      {
+        this.divShow = false;
+      }
+   }
+
+   SaveRawMaterial()
+   {
+      let data = this.jobForm.value;
+
+      this.RawMaterial.push(data);
+      console.log(this.RawMaterial);
+
+      this.jobForm.controls.itmeName1.reset();
+      this.jobForm.controls.itmeName1.reset();
+      this.jobForm.controls.unit1.reset();
+      this.jobForm.controls.HSN1.reset();
+      this.jobForm.controls.weight1.reset();
+      this.jobForm.controls.sqFeet1.reset();
+      this.jobForm.controls.PurRate1.reset();
+      this.jobForm.controls.SalesRate1.reset();
+      this.jobForm.controls.Thickness1.reset();
+
+
    }
 }

@@ -119,8 +119,113 @@
                                 </div>
                             </div>
                         </div>
-
-
+                        <div class="row" >
+                            <div class="col-sm-1">
+                                <input type="checkbox" class="form-control" (click)="checkboxCheck($event)">
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="divShow">
+                            <div class="col-sm-12" style="border:1px">
+                                <div class="border border-dark" style="padding:5px">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Item Name</label>
+                                                <input type="text" class="form-control" formControlName="itmeName1">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Item Type</label>    
+                                                <ngx-select-dropdown formControlName="itmeType1" [multiple]="false" [config]="config1" [options]="categoryData" value="id"></ngx-select-dropdown>                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Unit</label>
+                                                <select class="form-control" formControlName="unit1" required>
+                                                    <option value="0" selected disabled>Select Unit</option>
+                                                    <option *ngFor="let data of unitData" value="{{data.id}}">{{data.unit}}</option>
+                                                </select>   
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>HSN</label>
+                                                <input type="text" class="form-control" formControlName="HSN1">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Weight</label>
+                                                <input type="text" class="form-control" formControlName="weight1">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>sq.Feet</label>
+                                                <input type="text" class="form-control" formControlName="sqFeet1">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Purchase Rate</label>
+                                                <input type="text" class="form-control" formControlName="PurRate1">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Sales Rate</label>
+                                                <input type="text" class="form-control" formControlName="SalesRate1">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Thickness</label>
+                                                <input type="text" class="form-control" formControlName="Thickness1">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Add Raw Material</label>
+                                                <button class="btn btn-primary" (click)="SaveRawMaterial()">Add</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="divShow">
+                            <div class="col-md-12">
+                                <div class="border border-dark" style="padding:5px">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>Item Name</th>
+                                        <th>Item Type</th>
+                                        <th>Unit</th>
+                                        <th>HSN</th>
+                                        <th>Weight</th>
+                                        <th>Sq.Feet</th>
+                                        <th>Purchase Rate</th>
+                                        <th>Sales Rate</th>
+                                        <th>Thickness</th> 
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let data of RawMaterial">
+                                            <td>{{data.itmeName1}}</td>
+                                            <td>{{data.itmeType1.category_name}}</td>
+                                            <td>{{data.unit1}}</td>
+                                            <td>{{data.HSN1}}</td>
+                                            <td>{{data.weight1}}</td>
+                                            <td>{{data.sqFeet1}}</td>
+                                            <td>{{data.PurRate1}}</td>
+                                            <td>{{data.SalesRate1}}</td>
+                                            <td>{{data.Thickness1}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>  
+                            </div>
+                        </div>
 
                     <!-- </form> -->
                 </div>

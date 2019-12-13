@@ -52,4 +52,19 @@ export class JobMasterService {
     let updateData = this.httpClient.post(this.url+'updateJobDatas',data,{headers:httpHeader});
     return updateData;
   }
+  cotegoryData():Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let cotegoryData = this.httpClient.get(this.url + 'getCotegoryData',{headers : httpHeader});
+    return cotegoryData;
+  }
+
+  unitData():Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let unitData = this.httpClient.get(this.url+'getunit',{headers : httpHeader});
+    return unitData;
+  }
 }
