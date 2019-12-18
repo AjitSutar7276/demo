@@ -19,13 +19,10 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EmployeeMasterComponent } from './employee-master/employee-master.component';
 import { ShiftMasterComponent } from './shift-master/shift-master.component';
+import { JobInfComponent } from './job-inf/job-inf.component';
 
 @NgModule({
-<<<<<<< Updated upstream
-  declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent],
-=======
-  declarations: [FileSelectDirective,UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent, EmployeeMasterComponent, ShiftMasterComponent],
->>>>>>> Stashed changes
+  declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent, JobInfComponent],
   imports: [
     CommonModule,
     MasterRoutingModule,

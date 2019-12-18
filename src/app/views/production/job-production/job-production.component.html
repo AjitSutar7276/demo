@@ -1,0 +1,280 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> <strong>Job Production </strong> 
+            </div>
+            <!-- <form [formGroup]="partyForm"> -->
+            <form [formGroup]="jobProductionForm">
+            <div class="card-body">
+               
+                        <div class="row">
+                            <div class="col-md-3"> 
+                                <div class="form-group">
+                                    <label>Id</label>
+                                    <input class="form-control" formControlName=""  placeholder="New.." required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Start Time</label>
+                                    <input type="time" class="form-control" formControlName=""  placeholder="" required>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Lunch</label>
+                                    <input type="time" class="form-control" formControlName=""  placeholder="" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>End Time</label>
+                                    <input type="time" class="form-control" formControlName=""  placeholder="" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="date" class="form-control" formControlName=""  placeholder="" required>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Lunch Time</label>
+                                    <input type="time" class="form-control" formControlName="mob1"  placeholder="Mobile No 1.." required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Employee Name</label>
+                                    <input class="form-control" formControlName=""  placeholder="Employee Name..">
+                                </div>
+                            </div>
+                 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Process</label>
+                                    <select class="form-control" formControlName="process" required>
+                                        <option selected disabled>Select Process</option>
+                                        <option value="1">Process 1</option>
+                                        <option value="2">Process 2</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+               
+            </div>
+
+            <!-- <div class="card-footer">
+                <button class="btn btn-sm btn-primary" *ngIf="submitShow" type="submit" [disabled]="!partyForm.valid" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button class="btn btn-sm btn-primary" *ngIf="updateShow" type="submit" [disabled]="!partyForm.valid" (click)="updateData()"><i class="fa fa-dot-circle-o"></i>Update</button>
+
+                <button class="btn btn-sm btn-danger" type="reset" ><i class="fa fa-ban"></i> Cancel</button>
+            </div> -->
+        </form>
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> <strong>Records</strong>
+            </div>
+            <div class="card-body" style="padding: 5px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div style="overflow-x: scroll;">
+                            <table class="table table-bordered" style="margin: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>Short</th>
+                                        <th>Job Name</th>
+                                        <th>Size</th>
+                                        <th>Qty</th>
+                                        <th>Order Dt.</th>
+                                        <th>Delivery Dt.</th>
+                                        <th>Process Name</th>
+                                        <th>Process Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Shrt 1</td>
+                                        <td>Casting </td>
+                                        <td>102</td>
+                                        <td>500</td>
+                                        <td>24/12/2019</td>
+                                        <td>31/12/2019</td>
+                                        <td>Cast Process</td>
+                                        <td>56 Hr</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shrt 2</td>
+                                        <td>Mixing </td>
+                                        <td>56</td>
+                                        <td>256</td>
+                                        <td>02/09/2019</td>
+                                        <td>23/12/2019</td>
+                                        <td>Mix Process</td>
+                                        <td>102 Hr</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div style="overflow-x: scroll;">
+                            <table class="table table-bordered" style="margin: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>Job Name</th>
+                                        <th>Art No</th>
+                                        <th>Size</th>
+                                        <th>Qty</th>
+                                        <th>Process Name</th>
+                                        <th>Total Time</th>
+                                        <th>Requirment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Processing</td>
+                                        <td>Art-201</td>
+                                        <td>56 Rcl</td>
+                                        <td>45</td>
+                                        <td>Core Process</td>
+                                        <td>203 Hr</td>
+                                        <td>Colouring</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Hitting</td>
+                                        <td>Art-456</td>
+                                        <td>12 Hte</td>
+                                        <td>89</td>
+                                        <td>Hit Process</td>
+                                        <td>119 Hr</td>
+                                        <td>Hitting</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> <strong>Records</strong>
+            </div>
+            <div class="card-body" style="padding: 5px;">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Employee Name</label>
+                                    <select class="form-control" formControlName="" required>
+                                        <option selected disabled>Select Employee</option>
+                                        <option value="1">Employee 1</option>
+                                        <option value="2">Employee 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Total Required Time</label>
+                                    <input class="form-control" formControlName=""  placeholder="10..">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="overflow-x: scroll;">
+                            <table class="table table-bordered" style="margin: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>Short</th>
+                                        <th>Job Name</th>
+                                        <th>Size</th>
+                                        <th>Qty</th>
+                                        <th>Order Dt.</th>
+                                        <th>Delivery Dt.</th>
+                                        <th>Process Name</th>
+                                        <th>Process Time</th>
+                                        <th>Art</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>GCY-124</td>
+                                        <td>Filtering</td>
+                                        <td>56 GC</td>
+                                        <td>112</td>
+                                        <td>12/12/2019</td>
+                                        <td>29/12/2019</td>
+                                        <td>Anodise</td>
+                                        <td>20 Hr</td>
+                                        <td>Yes</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>LMK-052</td>
+                                        <td>Dispatching</td>
+                                        <td>22 DP</td>
+                                        <td>568</td>
+                                        <td>03/09/2019</td>
+                                        <td>25/11/2019</td>
+                                        <td>Material</td>
+                                        <td>89 Hr</td>
+                                        <td>No</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>PCK-124</td>
+                                        <td>Packaging</td>
+                                        <td>63 KH</td>
+                                        <td>354</td>
+                                        <td>08/04/2019</td>
+                                        <td>13/06/2019</td>
+                                        <td>Boxing</td>
+                                        <td>96 Hr</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+             
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+   
+</div>
+
+

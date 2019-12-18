@@ -106,6 +106,10 @@ export const navItems: NavData[] = [
         {
           name : 'Job Work',
           url :'/Production/JobWork'
+        },
+        {
+          name : 'Job Production',
+          url :'/Production/JobProduction'
         }
 
       ]
