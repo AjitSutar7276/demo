@@ -5,22 +5,34 @@
                     <i class="fa fa-align-justify"></i> <strong>Employee Master </strong> 
                 </div>
 
-                <form [formGroup]="partyForm">
+                <form [formGroup]="EmployeeForm">
                 <div class="card-body">
                    
                             <div class="row">
-                               
+                                <input type="hidden" formControlName="id">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Employee Name</label>
-                                        <input class="form-control" formControlName="eName"  placeholder="Employee Name.." required>
-                                    </div>
+                                        <input class="form-control" formControlName="eName" name=''  placeholder="Employee Name.." required>
+                                        <!-- <div *ngIf="eName.invalid && (eName.dirty || eName.touched)"
+                                            class="alert alert-danger">
+                                            <div *ngIf="eName.errors.required">
+                                                Name is required.
+                                            </div>
+                                        </div>-->
+                                    </div> 
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Employee Code</label>
                                         <input class="form-control" formControlName="eCode"  placeholder="Employee Code.." required>
+                                        <!-- <div *ngIf="eCode.invalid && (eCode.dirty || eCode.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="eCode.errors.required">
+                                            eCode is required.
+                                        </div>
+                                    </div> -->
                                     </div>
                                 </div>
             
@@ -29,6 +41,12 @@
                                     <div class="form-group">
                                         <label>Designation</label>
                                         <input class="form-control" formControlName="desig"  placeholder="Designation.." required>
+                                        <!-- <div *ngIf="desig.invalid && (desig.dirty || desig.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="desig.errors.required">
+                                            Designation is required.
+                                        </div>
+                                    </div> -->
                                     </div>
                                 </div>
     
@@ -36,6 +54,12 @@
                                     <div class="form-group">
                                         <label>Mobile No</label>
                                         <input class="form-control" formControlName="mNo"  placeholder="Mobile No.." required>
+                                        <!-- <div *ngIf="mNo.invalid && (mNo.dirty || mNo.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="mNo.errors.required">
+                                            Mobile is required.
+                                        </div>
+                                    </div> -->
                                     </div>
                                 </div>
     
@@ -47,20 +71,38 @@
                                     <div class="form-group">
                                         <label>Address</label>
                                         <textarea class="form-control" formControlName="address" placeholder="Address.." rows="1" required></textarea>
+                                        <!-- <div *ngIf="address.invalid && (address.dirty || address.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="address.errors.required">
+                                            Address is required.
+                                        </div>
+                                    </div> -->
                                     </div>
                                 </div>
     
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Joining Date</label>
-                                        <input type="date" class="form-control"  id="date-input" placeholder="Date.."  >
+                                        <input type="date" class="form-control" formControlName='joinDate'  id="date-input" placeholder="Date.."  >
+                                        <!-- <div *ngIf="joinDate.invalid && (joinDate.dirty || joinDate.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="joinDate.errors.required">
+                                            Join Date is required.
+                                        </div>
+                                    </div> -->
                                     </div>
                                 </div>
                      
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Monthly Salary</label>
-                                        <input class="form-control" formControlName="mSal"  placeholder="Monthly Salary.." required>
+                                        <input class="form-control" formControlName="eSal"  placeholder="Monthly Salary.." required>
+                                        <!-- <div *ngIf="eSal.invalid && (eSal.dirty || eSal.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="eSal.errors.required">
+                                            Salary is required.
+                                        </div>
+                                    </div> -->
                                     </div>
                                 </div>
     
@@ -70,7 +112,8 @@
                 </div>
     
                 <div class="card-footer">
-                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
+                    <button *ngIf="SubmitShow" class="btn btn-sm btn-primary"[disabled]="!EmployeeForm.valid" type="submit" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                    <button *ngIf="updateShow" class="btn btn-sm btn-primary"[disabled]="!EmployeeForm.valid"  type="submit" (click)="UpdateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
 
                     <button class="btn btn-sm btn-danger" type="reset" ><i class="fa fa-ban"></i> Cancel</button>
                 </div>
@@ -85,7 +128,7 @@
                     <i class="fa fa-align-justify"></i> <strong>Records</strong>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <!-- <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Employee Name</th>
@@ -119,7 +162,84 @@
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#">4</a></li>
                         <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
+                    </ul> -->
+                    <ngx-datatable
+                    class="material striped"
+                    [rows]="rows"
+                    [columns]="columns"
+                    [columnMode]="'force'"
+                    [headerHeight]="40"
+                    [footerHeight]="50"
+                    [rowHeight]="'auto'"
+                    [externalSorting]="true"
+                    [loadingIndicator]="loading"
+                    (sort)="onSort($event)">
+                    
+                    <ngx-datatable-column>
+                        <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>
+                            Emp Code
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.emp_code}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Name
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.emp_name}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Designation
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.designation}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Mobile No
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.mobile_no}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Address
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.address}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Joining Date
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.join_date}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Monthly Salary
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.salary}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" ngx-datatable-header-template>
+                            Action
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span><i class="fa fa-trash" style="color:red"aria-hidden="true" (click)="deleteUnit(row.id)"></i><i class="fa fa-pencil" style="color:blue;margin-left:10px" (click)="editUnit(row.id)" aria-hidden="true"></i></span>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    </ngx-datatable>
                 </div>
             </div>
         </div>

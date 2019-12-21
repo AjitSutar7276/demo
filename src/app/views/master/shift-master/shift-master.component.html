@@ -13,6 +13,7 @@
                             <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Shift Name</label>
+                                        <input type = 'hidden' formControlName='id'>
                                         <input class="form-control" formControlName="sftName"  placeholder="Shift Name.." required>
                                     </div>
                             </div>
@@ -20,14 +21,14 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Start Time</label>
-                                    <input class="form-control" formControlName="sTime"  placeholder="Start Time.." required>
+                                    <input type="time" class="form-control" formControlName="sTime"  placeholder="Start Time.." required>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>End Time</label>
-                                    <input class="form-control" formControlName="eTime"  placeholder="End Time.." required>
+                                    <input type="time"class="form-control" formControlName="eTime"  placeholder="End Time.." required>
                                 </div>
                             </div>
 
@@ -35,9 +36,9 @@
                                 <div class="form-group">
                                     <label>Night Shift?</label>
                                     <br>
-                                    <input type="radio" formControlName="shift" name="shift" value="1"  style="margin-top: 8px;" checked> Yes
+                                    <input type="radio" formControlName="shift" name="shift" value="Yes"  style="margin-top: 8px;" checked> Yes
                                     &nbsp;&nbsp;
-                                    <input type="radio" formControlName="shift" name="shift" value="2" style="margin-top: 8px;"> No
+                                    <input type="radio" formControlName="shift" name="shift" value="No" style="margin-top: 8px;"> No
                                 </div>
                             </div>
 
@@ -72,9 +73,9 @@
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-dot-circle-o"></i> Save</button>
-               
-                <button class="btn btn-sm btn-danger" type="reset" ><i class="fa fa-ban"></i> Cancel</button>
+                <button *ngIf="submitShow" [disabled]="!shiftMaster.valid" class="btn btn-sm btn-primary"  type="submit" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                <button *ngIf="updateShow" class="btn btn-sm btn-primary"[disabled]="!shiftMaster.valid"  type="submit" (click)="UpdateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
+                <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
             </div>
         </form>
         </div>
@@ -87,7 +88,7 @@
                 <i class="fa fa-align-justify"></i> <strong>Records</strong>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <!-- <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Shift Name</th>
@@ -121,7 +122,85 @@
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                     <li class="page-item"><a class="page-link" href="#">4</a></li>
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
+                </ul> -->
+
+                <ngx-datatable
+                    class="material striped"
+                    [rows]="rows"
+                    [columns]="columns"
+                    [columnMode]="'force'"
+                    [headerHeight]="40"
+                    [footerHeight]="50"
+                    [rowHeight]="'auto'"
+                    [externalSorting]="true"
+                    [loadingIndicator]="loading"
+                    (sort)="onSort($event)">
+                    
+                    <ngx-datatable-column>
+                        <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>
+                            Shift Name
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.shift_name}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Start Time
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.s_time}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            End Time
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.e_time}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Night Shift
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.nightShift}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Gross Time
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.g_time}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Total Time
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.t_time}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                            Actual Work Tiem
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.a_time}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column>
+                        <ng-template let-column="column" ngx-datatable-header-template>
+                            Action
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span><i class="fa fa-trash" style="color:red"aria-hidden="true" (click)="deleteUnit(row.id)"></i><i class="fa fa-pencil" style="color:blue;margin-left:10px" (click)="editUnit(row.id)" aria-hidden="true"></i></span>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    </ngx-datatable>
             </div>
         </div>
     </div>

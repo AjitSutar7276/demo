@@ -131,7 +131,11 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label>Item Name</label>
-                                                <input type="text" class="form-control" formControlName="itmeName1">
+                                                <!-- <input type="text" class="form-control" formControlName="itmeName1"> -->
+                                                <!-- <select formControlName="itmeName1" class="form-control">
+                                                    <option *ngFor="let data of Rawdata">{{data.itme_name}}</option>
+                                                </select> -->
+                                                <ngx-select-dropdown formControlName="itmeName1" [multiple]="false" [config]="config" [options]="Rawdata" value="material_id"></ngx-select-dropdown>
                                             </div>
                                         </div>
                                         <div class="col-sm-2">
@@ -230,11 +234,8 @@
                     <!-- </form> -->
                 </div>
 
-                
-
-    
                 <div class="card-footer">
-                    <button *ngIf="submitShow" class="btn btn-sm btn-primary" type="submit" [disabled]="!jobForm.valid" (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
+                    <button *ngIf="submitShow" class="btn btn-sm btn-primary" type="submit"  (click)="submitData()"><i class="fa fa-dot-circle-o"></i> Save</button>
                     <button *ngIf="updateShow" class="btn btn-sm btn-primary" type="submit" [disabled]="!jobForm.valid" (click)="updateData()"><i class="fa fa-dot-circle-o"></i> Update</button>
                     <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Cancel</button>
                 </div>

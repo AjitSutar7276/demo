@@ -16,6 +16,7 @@ export class JobMasterComponent implements OnInit {
   submitShow : boolean = true;
   categoryData :any;
   RawMaterial =[];
+  rawData : any;
 
   divShow : boolean = false;
   unitData : any;
@@ -78,6 +79,14 @@ export class JobMasterComponent implements OnInit {
       },err=>{
         console.log(err);
       });
+
+      this.jobservice.getRawMaterialData().subscribe(data=>{
+        this.rawData = data;
+        console.log('this is array');
+        console.log(this.rawData);
+      },err=>{
+        console.log(err);
+      })
   }
   get id(){return this.jobForm.get('id');}
   get ArtNo(){return this.jobForm.get('ArtNo');}

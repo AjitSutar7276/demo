@@ -19,10 +19,9 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EmployeeMasterComponent } from './employee-master/employee-master.component';
 import { ShiftMasterComponent } from './shift-master/shift-master.component';
-import { JobInfComponent } from './job-inf/job-inf.component';
-
+// FileSelectDirective,
 @NgModule({
-  declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent, JobInfComponent],
+  declarations: [UnitMasterComponent, ShadeMasterComponent, JobMasterComponent, JobProcessMasterComponent, SurfaceTreMasterComponent, RawMaterialMasterComponent, MachineMasterComponent, EmployeeMasterComponent, ShiftMasterComponent],
   imports: [
     CommonModule,
     MasterRoutingModule,
