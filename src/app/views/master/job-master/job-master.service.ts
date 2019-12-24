@@ -75,4 +75,12 @@ export class JobMasterService {
     let RawData = this.httpClient.get(this.url+'getRawMaterialData',{headers : httpHeader});
     return RawData; 
   }
+
+  getRawMaterialDataid(id):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let rawData = this.httpClient.get(this.url+'getRawMaterialDataid/'+id,{headers : httpHeader});
+    return rawData;
+  }
 }

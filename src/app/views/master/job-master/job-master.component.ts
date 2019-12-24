@@ -30,6 +30,18 @@ export class JobMasterComponent implements OnInit {
     searchPlaceholder:'Search' 
     //searchOnKey: 'name' 
   }
+
+  config = {
+    displayKey:"itme_name", 
+    search: true,
+    height: 'auto', 
+    placeholder:'Select Item Name',  
+    moreText: 'more',
+    noResultsFound: 'No results found!',
+    searchPlaceholder:'Search' 
+    //searchOnKey: 'name' 
+  }
+
   jobForm = new FormGroup({
     id          : new FormControl(''),
     ArtNo       : new FormControl(''),
@@ -110,13 +122,24 @@ export class JobMasterComponent implements OnInit {
   get itmeType1(){return this.jobForm.get('itmeType1');}
   get itmeName1(){return this.jobForm.get('itmeName1');}
   ngOnInit() {
-    this.jobservice.getJobMasterData().subscribe(data=>{
+    this.jobservice.getJobMasterData().subscribe(data=>
+      {
           this.jobArray = data;
           this.autoId = this.jobArray.length;
           this.autoId = this.autoId + 1;
           this.jobForm.controls.id.setValue(this.autoId);
-      },err=>{
+      },err=>
+      {
           console.log('Something is bad');
+      });
+
+      //this Raw Data
+      this.jobservice.getRawMaterialData().subscribe(data=>{
+        this.rawData = data;
+        console.log('this is array');
+        console.log(this.rawData);
+      },err=>{
+        console.log(err);
       })
   }
 
@@ -126,6 +149,7 @@ export class JobMasterComponent implements OnInit {
     // console.log(this.jobForm.value);
     let data = this.jobForm.value;
     data['RawDetails'] = this.RawMaterial;
+    console.log(data['RawDetails']);
     data['Checked'] = this.divShow;
     console.log(data);
     this.jobservice.submitData(data).subscribe(data=>{
@@ -179,14 +203,16 @@ export class JobMasterComponent implements OnInit {
    //delete data
    deleteUnit(eles)
    {
-       this.jobservice.deleteJob(eles).subscribe(data=>{
+       this.jobservice.deleteJob(eles).subscribe(data=>
+       {
            console.log(data);
            this.ngOnInit();
            this.toastr.success('Job Deleted Successfully', 'Job Master');
-       },err=>{
+       },err=>
+       {
            console.log('Not Delete Record');
            this.toastr.success('Job Not Deleted. Something is Wrong.', 'Job Master');
-       })
+       });
    }
 
    checkboxCheck(event)
@@ -204,12 +230,12 @@ export class JobMasterComponent implements OnInit {
    SaveRawMaterial()
    {
       let data = this.jobForm.value;
-
       this.RawMaterial.push(data);
       console.log(this.RawMaterial);
 
+
       this.jobForm.controls.itmeName1.reset();
-      this.jobForm.controls.itmeName1.reset();
+      this.jobForm.controls.itmeType1.reset();
       this.jobForm.controls.unit1.reset();
       this.jobForm.controls.HSN1.reset();
       this.jobForm.controls.weight1.reset();
@@ -217,7 +243,25 @@ export class JobMasterComponent implements OnInit {
       this.jobForm.controls.PurRate1.reset();
       this.jobForm.controls.SalesRate1.reset();
       this.jobForm.controls.Thickness1.reset();
+   }
 
+   itemSelectName(ele)
+   {
+     console.log(ele.value.material_id);
+     this.jobservice.getRawMaterialDataid(ele.value.material_id).subscribe(data=>
+      {
+        console.log(data);
+        this.jobForm.controls.itmeType1.setValue(data[0].item_type);
+        this.jobForm.controls.unit1.setValue(data[0].unit);
+        this.jobForm.controls.HSN1.setValue(data[0].hsn);
+        this.jobForm.controls.weight1.setValue(data[0].weight);
+        this.jobForm.controls.PurRate1.setValue(data[0].pur_rate);
+        this.jobForm.controls.SalesRate1.setValue(data[0].sale_rate);
+        this.jobForm.controls.Thickness1.setValue(data[0].thinkness);
+        this.jobForm.controls.sqFeet1.setValue(data[0].feet);
+     },err=>
+     {
 
+     })
    }
 }

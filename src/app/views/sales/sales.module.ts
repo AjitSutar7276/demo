@@ -6,6 +6,7 @@ import { PartyMasterComponent } from './party-master/party-master.component';
 import { QuotationMasterComponent } from './quotation-master/quotation-master.component';
 import { OrderBookComponent } from './order-book/order-book.component';
 import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 
@@ -16,6 +17,7 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
     SalesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxDatatableModule,
     SelectDropDownModule
   ]
 })

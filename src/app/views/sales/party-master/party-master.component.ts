@@ -17,6 +17,7 @@ export class PartyMasterComponent implements OnInit {
   autoId   : any;
 
   partyForm = new FormGroup({
+    id       : new FormControl(''),
     Customer : new FormControl(''),
     ptName   : new FormControl(''),
     address  : new FormControl(''),
@@ -51,6 +52,7 @@ export class PartyMasterComponent implements OnInit {
     console.log(data);
     this.partyServies.submit(data).subscribe(data=>{
       this.ngOnInit();
+      this.partyForm.reset();
       this.toastr.success('Party Saved Successfully', 'Party Master');
     },err=>{
       console.log(err);
@@ -58,6 +60,20 @@ export class PartyMasterComponent implements OnInit {
     })
   }
 
+  updateData()
+  {
+    let data = this.partyForm.value;
+    this.partyServies.update(data).subscribe(data=>{
+      this.ngOnInit();
+      this.partyForm.reset();
+      this.submitShow = true;
+      this.updateShow = false;
+      this.toastr.success('Party Update Successfully', 'Party Master');
+    },err=>{
+      console.log(err);
+      this.toastr.success('Party Not Saved. Something is Wrong.', 'Party Master');
+    })
+  }
   //editPartyData 
   editPartyData(ele)
   {
@@ -71,7 +87,10 @@ export class PartyMasterComponent implements OnInit {
       this.partyForm.controls.fax.setValue(data[0].fax);
       this.partyForm.controls.gst.setValue(data[0].gst);
       this.partyForm.controls.Customer.setValue(data[0].party_type);
-      this.toastr.success('Party Updated Successfully', 'Party Master');
+      this.partyForm.controls.id.setValue(data[0].party_id);
+      this.submitShow = false;
+      this.updateShow = true;
+      // this.toastr.success('Party Updated Successfully', 'Party Master');
     },err=>{
       console.log(err);
       this.toastr.success('Party Not Updated. Something is Wrong.', 'Party Master');

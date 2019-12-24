@@ -26,6 +26,8 @@ export class JobWorkComponent implements OnInit {
   TotalCoast  : any = 0;
   processData : any;
   processDataList = [];
+  RawMaterialData = [];
+  RawString : string;
 
   config = {
     displayKey:"party_name", 
@@ -188,6 +190,45 @@ export class JobWorkComponent implements OnInit {
   {
     let joid = ele;
     let dtat = this.JobData.filter(data=>data.id == joid);
+
+    this.jobservice.getRawmaterialdata(ele).subscribe(data=>{
+       let raw = []
+       this.RawString = data[0].RawDetails;
+       raw = this.RawString.split(',');
+       raw.forEach(element => {
+        var ret = element.replace('undefined','');
+        if(ret != '')
+        {
+          this.RawMaterialData.push(ret);
+        }
+       });
+       console.log(this.RawMaterialData);
+       this.jobservice.getRawDetails(this.RawMaterialData).subscribe(data=>{
+        console.log(data);
+        data.forEach(ele => {
+          let data1 = {
+            'jobWorkName' : data[ele].itme_name,
+            'jodid'       : data.It.material_id,
+            'QTY'         : data.qty1,
+            'lenght'      : data.Lenght,
+            'width'       : data.Width,
+            'Height'      : data.height,
+            'Thick'       : data[ele].thinkness,
+            'SurfaceName' : data.surface.surface_treatment,
+            'surfaceid'   : data.surface.id,
+            'purCost'     : data[ele].pur_rate,
+          }
+      
+          // this.JobWorkList.push(data1);
+        });
+       
+       },err=>{
+         console.log(err);
+       })
+        
+    },err=>{
+      console.log(err);
+    })
     console.log(dtat);
     this.JobWork.controls.jobName.setValue(dtat[0].job_name);
     this.JobWork.controls.jobID.setValue(dtat[0].id);

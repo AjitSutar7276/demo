@@ -135,7 +135,7 @@
                                                 <!-- <select formControlName="itmeName1" class="form-control">
                                                     <option *ngFor="let data of Rawdata">{{data.itme_name}}</option>
                                                 </select> -->
-                                                <ngx-select-dropdown formControlName="itmeName1" [multiple]="false" [config]="config" [options]="Rawdata" value="material_id"></ngx-select-dropdown>
+                                                <ngx-select-dropdown (change)="itemSelectName($event)" formControlName="itmeName1" [multiple]="false" [config]="config" [options]="rawData" value="material_id"></ngx-select-dropdown>
                                             </div>
                                         </div>
                                         <div class="col-sm-2">
@@ -215,8 +215,8 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let data of RawMaterial">
-                                            <td>{{data.itmeName1}}</td>
-                                            <td>{{data.itmeType1.category_name}}</td>
+                                            <td>{{data.itmeName1.itme_name}}</td>
+                                            <td>{{data.itmeName1.item_type}}</td>
                                             <td>{{data.unit1}}</td>
                                             <td>{{data.HSN1}}</td>
                                             <td>{{data.weight1}}</td>

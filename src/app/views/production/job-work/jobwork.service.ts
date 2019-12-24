@@ -43,4 +43,20 @@ export class JobworkService {
     let result = this.httpClient.post(this.url+'SubmitJodWorddata',data,{headers:httpHeader});
     return result;
   }
+
+  getRawmaterialdata(id):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.get(this.url+'getRawMaterialDataList/'+id,{headers : httpHeader});
+    return result;
+  }
+
+  getRawDetails(data):Observable<any>{
+    let httpHeader = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    });
+    let result = this.httpClient.post(this.url+'GetRawDetailsData',data,{headers : httpHeader});
+    return result;
+  }
 }

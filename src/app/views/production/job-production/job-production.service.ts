@@ -3,55 +3,45 @@ import { Headers,Http,HttpModule} from '@angular/http';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { config} from '../../../common/ServerConfig';
 import { Observable} from 'rxjs';
-import { map,retry} from 'rxjs/operators'; 
-
+import { map,retry} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PartyMasterService {
+export class JobProductionService {
 
   private url : string = config.url;
   constructor(private httpClient : HttpClient) { }
 
-  submit(data):Observable<any>{
+  getProcessData():Observable<any>{
     let httpHeader = new HttpHeaders({
       'Content-Type' : 'application/json'
     });
-
-    let result = this.httpClient.post(this.url+'submitPartyData',data,{headers : httpHeader});
+    let result = this.httpClient.post(this.url+'getJobProcessMaster',{headers : httpHeader});
     return result;
   }
 
-  getPartyData():Observable<any>{
+  getJobPendingData(data):Observable<any>{
     let httpHeader = new HttpHeaders({
       'Content-Type' : 'application/json'
     });
-    let result = this.httpClient.get(this.url + 'getPartyData',{headers : httpHeader});
+    let result = this.httpClient.post(this.url+'getJobPendingData',data,{headers : httpHeader});
     return result;
   }
 
-  editPartyData(id):Observable<any>{
+  getEmployeeData():Observable<any>{
     let httpHeader = new HttpHeaders({
       'Content-Type' : 'application/json'
     });
-    let result = this.httpClient.get(this.url+'editPartyData/'+id,{headers:httpHeader});
+    let result = this.httpClient.get(this.url+'getEmployeeData',{headers : httpHeader});
     return result;
   }
 
-  deletePartyData(id):Observable<any>{
+  SubmitData(data):Observable<any>{
     let httpHeader = new HttpHeaders({
       'Content-Type' : 'application/json'
     });
-    let result = this.httpClient.get(this.url+'deletePartyData/'+id,{headers : httpHeader});
-    return result;
-  }
-
-  update(data):Observable<any>{
-    let httpHeader = new HttpHeaders({
-      'Content-Type' : 'application/json'
-    });
-    let result = this.httpClient.post(this.url+'updatePartyData',data,{headers :httpHeader});
+    let result = this.httpClient.post(this.url+'SubmitJobProducation',data,{headers : httpHeader});
     return result;
   }
 }
