@@ -7,11 +7,13 @@ import { QuotationMasterComponent } from './quotation-master/quotation-master.co
 import { OrderBookComponent } from './order-book/order-book.component';
 import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { QuotationListComponent } from './quotation-list/quotation-list.component';
+import { QuotationReportComponent } from './quotation-report/quotation-report.component';
 
 
 
 @NgModule({
-  declarations: [PartyMasterComponent, QuotationMasterComponent, OrderBookComponent],
+  declarations: [PartyMasterComponent, QuotationMasterComponent, OrderBookComponent, QuotationListComponent, QuotationReportComponent],
   imports: [
     CommonModule,
     SalesRoutingModule,
