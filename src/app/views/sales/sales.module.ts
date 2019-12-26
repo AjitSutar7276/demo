@@ -9,11 +9,13 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { QuotationListComponent } from './quotation-list/quotation-list.component';
 import { QuotationReportComponent } from './quotation-report/quotation-report.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { OrderReportComponent } from './order-report/order-report.component';
 
 
 
 @NgModule({
-  declarations: [PartyMasterComponent, QuotationMasterComponent, OrderBookComponent, QuotationListComponent, QuotationReportComponent],
+  declarations: [PartyMasterComponent, QuotationMasterComponent, OrderBookComponent, QuotationListComponent, QuotationReportComponent, OrderListComponent, OrderReportComponent],
   imports: [
     CommonModule,
     SalesRoutingModule,

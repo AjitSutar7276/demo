@@ -5,6 +5,8 @@ import { QuotationMasterComponent} from './quotation-master/quotation-master.com
 import { OrderBookComponent} from './order-book/order-book.component';
 import { QuotationListComponent } from './quotation-list/quotation-list.component'; 
 import { QuotationReportComponent } from './quotation-report/quotation-report.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { OrderReportComponent } from './order-report/order-report.component';
 
 const routes: Routes = [
   {
@@ -50,6 +52,20 @@ const routes: Routes = [
         component: OrderBookComponent,
         data: {
           title: 'Order Book'
+        }
+      },
+      {
+        path: 'order_list',
+        component: OrderListComponent,
+        data: {
+          title: 'Order List'
+        }
+      },
+      {
+        path: 'order_report/:id',
+        component: OrderReportComponent,
+        data: {
+          title: 'Order Report'
         }
       }
     

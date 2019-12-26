@@ -100,6 +100,10 @@ export const navItems: NavData[] = [
       {
         name: 'Order Book',
         url: '/Sales/order'
+      },
+      {
+        name: 'Order List',
+        url: '/Sales/order_list'
       }
     ]},
     {
