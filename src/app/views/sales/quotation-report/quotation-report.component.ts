@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quotation-report',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuotationReportComponent implements OnInit {
 
-  constructor() { }
+  id : any;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+      console.log(this.id);
+  });
   }
 
 }

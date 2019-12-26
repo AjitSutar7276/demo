@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuotationListService } from './quotation-list.service';
 
 @Component({
   selector: 'app-quotation-list',
@@ -6,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quotation-list.component.scss']
 })
 export class QuotationListComponent implements OnInit {
+  rows =[];
+  constructor(private quotationServices : QuotationListService) {
 
-  constructor() { }
+      this.quotationServices.getQuotationDetailsData().subscribe(data=>{
+        this.rows = data;
+      },err=>{
+        console.log(err);
+      })
+   }
 
   ngOnInit() {
   }

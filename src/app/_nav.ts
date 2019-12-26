@@ -94,6 +94,10 @@ export const navItems: NavData[] = [
         url: '/Sales/quotation'
       },
       {
+        name: 'Quotation List',
+        url: '/Sales/quotation_list'
+      },
+      {
         name: 'Order Book',
         url: '/Sales/order'
       }

@@ -1,1 +1,73 @@
-<p>quotation-list works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> <strong>Quotation Records</strong>
+            </div>
+            <div class="card-body">
+                <!-- <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Unit ID</th>
+                            <th>Format</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let data of unitarray">
+                            <td>{{data.id}}</td>
+                            <td>{{data.unit}}</td>
+                            <td><span ><button class="btn btn-success" (click)="editUnit(data.id)">Edit</button></span> <span></span><button class="btn btn-danger" (click)="deleteUnit(data.id)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <!-- <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul> -->
+                <ngx-datatable
+                class="material striped"
+                [rows]="rows"
+                [columns]="columns"
+                [columnMode]="'force'"
+                [headerHeight]="40"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [externalSorting]="true"
+                [loadingIndicator]="loading"
+                (sort)="onSort($event)">
+                
+                <ngx-datatable-column>
+                    <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>
+                        Quotation No.
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <!-- {{row.qutation_id}} -->
+                        <a routerLink="/Sales/quotation_report/{{row.qutation_id}}" routerLinkActive="active">{{row.qutation_id}}</a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Quotation Date
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.qutation_date}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column>
+                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                        Party Name
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.party_name}}
+                    </ng-template>
+                </ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
+    </div>
+</div>
