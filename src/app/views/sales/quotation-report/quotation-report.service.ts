@@ -8,18 +8,17 @@ import { map,retry} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class QuotationListService {
+export class QuotationReportService {
 
   private url : string = config.url;
   constructor(private httpClient : HttpClient) { }
 
-  getQuotationDetailsData():Observable<any>{
+  getQuotationDetailsID(id):Observable<any>{
     let httpHeader = new HttpHeaders({
       'Content-Type' : 'application/json'
     });
-    let result = this.httpClient.get(this.url + 'getQuotationDetailsDatas',{headers : httpHeader});
+    let result = this.httpClient.get(this.url + 'getQuotationDetailsData/'+id,{headers : httpHeader});
     return result;
   }
-
 
 }

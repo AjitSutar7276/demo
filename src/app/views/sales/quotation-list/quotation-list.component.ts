@@ -12,6 +12,7 @@ export class QuotationListComponent implements OnInit {
 
       this.quotationServices.getQuotationDetailsData().subscribe(data=>{
         this.rows = data;
+        console.log(this.rows);
       },err=>{
         console.log(err);
       })
