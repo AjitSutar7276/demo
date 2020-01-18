@@ -121,6 +121,8 @@ export class JobMasterComponent implements OnInit {
   get unit1(){return this.jobForm.get('unit1');}
   get itmeType1(){return this.jobForm.get('itmeType1');}
   get itmeName1(){return this.jobForm.get('itmeName1');}
+
+
   ngOnInit() {
     this.jobservice.getJobMasterData().subscribe(data=>
       {
@@ -155,6 +157,7 @@ export class JobMasterComponent implements OnInit {
     this.jobservice.submitData(data).subscribe(data=>{
         // console.log(data);
         this.jobForm.reset();
+        this.RawMaterial = [];  
         this.ngOnInit();
         this.toastr.success('Job Saved Successfully', 'Job Master');
     },err=>{

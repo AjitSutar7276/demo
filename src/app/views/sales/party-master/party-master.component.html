@@ -132,7 +132,7 @@
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul> -->
 
-                <ngx-datatable
+                <!-- <ngx-datatable
                 class="material striped"
                 [rows]="partyData"
                 [columns]="columns"
@@ -142,7 +142,15 @@
                 [rowHeight]="'auto'"
                 [externalSorting]="true"
                 [loadingIndicator]="loading"
-                (sort)="onSort($event)">
+                (sort)="onSort($event)"> -->
+                <ngx-datatable
+                    class="material striped"
+                    [rows]="partyData"
+                    [columnMode]="'force'"
+                    [headerHeight]="40"
+                    [footerHeight]="50"
+                    [rowHeight]="'auto'"
+                    [externalSorting]="true">
                 
                 <ngx-datatable-column>
                     <ng-template let-column="column"let-sort="sortFn" ngx-datatable-header-template>

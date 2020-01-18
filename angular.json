@@ -32,7 +32,8 @@
               "includePaths": ["./node_modules"]
             },
             "scripts": [
-              "node_modules/chart.js/dist/Chart.min.js"
+              "node_modules/chart.js/dist/Chart.min.js",
+              "src/app/common/amountCal.js"
             ]
           },
           "configurations": {

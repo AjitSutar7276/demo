@@ -11,6 +11,7 @@ import { QuotationListComponent } from './quotation-list/quotation-list.componen
 import { QuotationReportComponent } from './quotation-report/quotation-report.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderReportComponent } from './order-report/order-report.component';
+import { ExportAsModule } from 'ngx-export-as';
 
 
 
@@ -22,7 +23,8 @@ import { OrderReportComponent } from './order-report/order-report.component';
     FormsModule,
     ReactiveFormsModule,
     NgxDatatableModule,
-    SelectDropDownModule
+    SelectDropDownModule,
+    ExportAsModule
   ]
 })
 export class SalesModule { }
