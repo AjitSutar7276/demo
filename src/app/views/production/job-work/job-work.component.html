@@ -269,39 +269,39 @@
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-6">Total raw material cost</div>
-                                            <div class="col-sm-6"><input type="text" [(ngModel)]="RawCost" [ngModelOptions]="{standalone: true}"></div>
+                                            <div class="col-sm-6"><input type="text" style="width:100%;" [(ngModel)]="RawCost" [ngModelOptions]="{standalone: true}"></div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-6">Production Cost<span><input type="text" style="width:18%" (keyup)="GetProductionCost($event)">%</span></div>
-                                            <div class="col-sm-6"><input type="text" [(ngModel)]="productionCost" [ngModelOptions]="{standalone: true}" readonly></div>
+                                            <div class="col-sm-6"><input type="text" style="width:100%;" [(ngModel)]="productionCost" [ngModelOptions]="{standalone: true}" readonly></div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                             <div class="row">
                                                 <div class="col-sm-6">Surface Treatement Cost</div>
-                                                <div class="col-sm-6"><input type="text" [(ngModel)]="surfaceCost" [ngModelOptions]="{standalone: true}" (keyup)="GetSurfaceCost($event.target.value)"></div>
+                                                <div class="col-sm-6"><input type="text" style="width:100%;" [(ngModel)]="surfaceCost" [ngModelOptions]="{standalone: true}" (keyup)="GetSurfaceCost($event.target.value)"></div>
                                             </div>
                                         
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-6">Fitting Charges</div>
-                                            <div class="col-sm-6"><input type="text" [(ngModel)]="fittingChrg" [ngModelOptions]="{standalone: true}" (keyup) ="fittingCost($event.target.value)"></div>
+                                            <div class="col-sm-6"><input type="text" style="width:100%;" [(ngModel)]="fittingChrg" [ngModelOptions]="{standalone: true}" (keyup) ="fittingCost($event.target.value)"></div>
                                         </div>
                                         
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-6">Packing Forwarding</div>
-                                            <div class="col-sm-6"><input type="text" [(ngModel)]="packingFord" [ngModelOptions]="{standalone: true}" (keyup)="packingCost($event.target.value)"></div>
+                                            <div class="col-sm-6"><input type="text" style="width:100%;" [(ngModel)]="packingFord" [ngModelOptions]="{standalone: true}" (keyup)="packingCost($event.target.value)"></div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-6">Total Cost</div>
-                                            <div class="col-sm-6"><input type="text" [(ngModel)]="TotalCoast" [ngModelOptions]="{standalone: true}" readonly></div>
+                                            <div class="col-sm-6"><input type="text" style="width:100%;" [(ngModel)]="TotalCoast" [ngModelOptions]="{standalone: true}" readonly></div>
                                         </div>
                                     </div>
                                 </div>
